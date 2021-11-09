@@ -19,7 +19,6 @@ namespace Digitalizador
         }
 
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             var dlAbrirImagenQR = new OpenFileDialog();
@@ -37,6 +36,8 @@ namespace Digitalizador
                 textBox1.Text = dlAbrirImagenQR.FileName;
                 pictureBox1.Image = source;
                 pictureBox1.Refresh();
+
+                // ESTO ES UN COMENTARIO SOLO PARA PROBAR UN PUSH EN GITHUB
             }
         }
 
