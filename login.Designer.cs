@@ -58,18 +58,17 @@ namespace Digitalizador
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(409, 406);
+            this.panel1.Size = new System.Drawing.Size(307, 330);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Digitalizador.Properties.Resources.Logo_IEPC;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 102);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 83);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(369, 209);
+            this.pictureBox1.Size = new System.Drawing.Size(277, 170);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -85,9 +84,10 @@ namespace Digitalizador
             this.panel3.Controls.Add(this.linkLabel1);
             this.panel3.Controls.Add(this.txtUsuario);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(406, 0);
+            this.panel3.Location = new System.Drawing.Point(304, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(634, 406);
+            this.panel3.Size = new System.Drawing.Size(476, 330);
             this.panel3.TabIndex = 7;
             // 
             // panel2
@@ -95,20 +95,18 @@ namespace Digitalizador
             this.panel2.Controls.Add(this.btnMinimizar);
             this.panel2.Controls.Add(this.lblTitulo);
             this.panel2.Controls.Add(this.btnCerrar);
-            this.panel2.Location = new System.Drawing.Point(-4, 1);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(-3, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(621, 52);
+            this.panel2.Size = new System.Drawing.Size(466, 42);
             this.panel2.TabIndex = 20;
             // 
             // btnMinimizar
             // 
             this.btnMinimizar.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimizar.Image = global::Digitalizador.Properties.Resources._;
-            this.btnMinimizar.Location = new System.Drawing.Point(553, 10);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimizar.Location = new System.Drawing.Point(415, 8);
             this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(28, 30);
+            this.btnMinimizar.Size = new System.Drawing.Size(21, 24);
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnMinimizar.TabIndex = 12;
             this.btnMinimizar.TabStop = false;
@@ -118,10 +116,9 @@ namespace Digitalizador
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.DimGray;
-            this.lblTitulo.Location = new System.Drawing.Point(225, 10);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(169, 8);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(179, 33);
+            this.lblTitulo.Size = new System.Drawing.Size(132, 24);
             this.lblTitulo.TabIndex = 5;
             this.lblTitulo.Text = "Digitalizador";
             // 
@@ -129,10 +126,9 @@ namespace Digitalizador
             // 
             this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
             this.btnCerrar.Image = global::Digitalizador.Properties.Resources.X;
-            this.btnCerrar.Location = new System.Drawing.Point(589, 10);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrar.Location = new System.Drawing.Point(442, 8);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(28, 30);
+            this.btnCerrar.Size = new System.Drawing.Size(21, 24);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnCerrar.TabIndex = 11;
             this.btnCerrar.TabStop = false;
@@ -140,22 +136,21 @@ namespace Digitalizador
             // bntIngresar
             // 
             this.bntIngresar.Image = global::Digitalizador.Properties.Resources.imgIngresar;
-            this.bntIngresar.Location = new System.Drawing.Point(124, 260);
-            this.bntIngresar.Margin = new System.Windows.Forms.Padding(4);
+            this.bntIngresar.Location = new System.Drawing.Point(93, 211);
             this.bntIngresar.Name = "bntIngresar";
-            this.bntIngresar.Size = new System.Drawing.Size(376, 41);
+            this.bntIngresar.Size = new System.Drawing.Size(282, 33);
             this.bntIngresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.bntIngresar.TabIndex = 19;
             this.bntIngresar.TabStop = false;
+            this.bntIngresar.Click += new System.EventHandler(this.bntIngresar_Click);
             // 
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.LinkVisited = true;
-            this.linkLabel3.Location = new System.Drawing.Point(31, 210);
-            this.linkLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel3.Location = new System.Drawing.Point(23, 171);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(560, 17);
+            this.linkLabel3.Size = new System.Drawing.Size(421, 13);
             this.linkLabel3.TabIndex = 18;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "_____________________________________________________________________";
@@ -170,10 +165,9 @@ namespace Digitalizador
             "PruebasLocal",
             "Pruebas",
             "Produccion"});
-            this.cmbEntornos.Location = new System.Drawing.Point(420, 354);
-            this.cmbEntornos.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEntornos.Location = new System.Drawing.Point(315, 288);
             this.cmbEntornos.Name = "cmbEntornos";
-            this.cmbEntornos.Size = new System.Drawing.Size(160, 28);
+            this.cmbEntornos.Size = new System.Drawing.Size(121, 25);
             this.cmbEntornos.TabIndex = 17;
             // 
             // label1
@@ -181,10 +175,9 @@ namespace Digitalizador
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(304, 359);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(228, 292);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 21);
+            this.label1.Size = new System.Drawing.Size(58, 17);
             this.label1.TabIndex = 16;
             this.label1.Text = "Entorno";
             // 
@@ -194,11 +187,10 @@ namespace Digitalizador
             this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContrasena.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContrasena.ForeColor = System.Drawing.Color.White;
-            this.txtContrasena.Location = new System.Drawing.Point(35, 182);
-            this.txtContrasena.Margin = new System.Windows.Forms.Padding(4);
+            this.txtContrasena.Location = new System.Drawing.Point(26, 148);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '*';
-            this.txtContrasena.Size = new System.Drawing.Size(547, 25);
+            this.txtContrasena.Size = new System.Drawing.Size(410, 20);
             this.txtContrasena.TabIndex = 15;
             this.txtContrasena.Text = "Contraseña";
             this.txtContrasena.UseWaitCursor = true;
@@ -207,10 +199,9 @@ namespace Digitalizador
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkVisited = true;
-            this.linkLabel1.Location = new System.Drawing.Point(31, 128);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel1.Location = new System.Drawing.Point(23, 104);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(560, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(421, 13);
             this.linkLabel1.TabIndex = 14;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "_____________________________________________________________________";
@@ -221,10 +212,9 @@ namespace Digitalizador
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.Color.White;
-            this.txtUsuario.Location = new System.Drawing.Point(35, 100);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsuario.Location = new System.Drawing.Point(26, 81);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(547, 25);
+            this.txtUsuario.Size = new System.Drawing.Size(410, 20);
             this.txtUsuario.TabIndex = 13;
             this.txtUsuario.Text = "Usuario";
             this.txtUsuario.UseWaitCursor = true;
@@ -232,14 +222,14 @@ namespace Digitalizador
             // login
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.ClientSize = new System.Drawing.Size(1040, 406);
+            this.ClientSize = new System.Drawing.Size(780, 330);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "login";

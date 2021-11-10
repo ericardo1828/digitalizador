@@ -81,9 +81,19 @@ namespace Digitalizador
         {
             Conexion con = new Conexion();
             string sql = "SELECT * FROM dbo.users WHERE [email] = '" + txtUsuario.Text.ToString().Trim() + "'";
+
+            if (GetSetting("entorno").ToString().Trim() == "")
+            {
+                SetSetting("entorno", "pruebas");
+            }
+
             DataTable odt = con.RetSqlDataTable(GetSetting("entorno").ToString().Trim(), sql);
+            //DataTable odt = con.RetSqlDataTable("Pruebas", sql);
+
+
             if (odt != null && odt.Rows.Count > 0)
             {
+               
                 //string entorno = ConfigurationManager.AppSettings["entorno"];
 
                 this.Hide();
@@ -177,8 +187,7 @@ namespace Digitalizador
             configuration.Save(ConfigurationSaveMode.Full, true);
             ConfigurationManager.RefreshSection("appSettings");
         }
-        #endregion
 
-       
+        #endregion
     }
 }
