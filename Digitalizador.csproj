@@ -186,7 +186,9 @@
     <None Include="images\-.png" />
     <None Include="images\X.png" />
     <None Include="images\cancel.png" />
-    <None Include="images\imgIngresar.PNG" />
+    <Content Include="images\imgIngresar_blue.PNG" />
+    <Content Include="images\imgIngresar_dark.png" />
+    <Content Include="images\imgIngresar_sige.png" />
     <Content Include="images\Logo IEPC.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
