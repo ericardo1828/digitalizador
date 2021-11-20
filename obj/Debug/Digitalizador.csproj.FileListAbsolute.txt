@@ -53,7 +53,6 @@ C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Interop.AcroPDF
 C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Interop.WIA.dll
 C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\AxInterop.AcroPDFLib.dll
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.csproj.AssemblyReference.cache
-C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.exe.config
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Interop.AcroPDFLib.dll
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Interop.WIA.dll
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\AxInterop.AcroPDFLib.dll
@@ -70,3 +69,15 @@ C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.c
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.csproj.CopyComplete
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.exe
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.pdb
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Microsoft.Data.Sqlite.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\SQLitePCLRaw.core.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Microsoft.Data.Sqlite.xml
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\System.Buffers.xml
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\System.Memory.xml
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
