@@ -79,6 +79,7 @@ namespace Digitalizador
             }
 
 
+
         }
 
         public static Bitmap resizeImage(Image imgToResize, Size size)
@@ -123,7 +124,6 @@ namespace Digitalizador
             {
                 return new string[0];
             }
-
         }
 
         private void btnLeerCodigoQR_Click(object sender, EventArgs e)
@@ -135,7 +135,6 @@ namespace Digitalizador
             {
                 cadenaObtenida = cadenaObtenida + arr[x].ToString().Trim();
             }
-
             textBox2.Text = cadenaObtenida;
         }
 
@@ -153,7 +152,6 @@ namespace Digitalizador
             {
                 return new string[0];
             }
-
         }
 
         public void ubicarCodigoQR()

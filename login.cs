@@ -23,6 +23,9 @@ namespace Digitalizador
         #region eventos de controles del formulario
         private void login_Load(object sender, EventArgs e)
         {
+            txtUsuario.Text = "ericardo.munoz@iepcjalisco.org.mx";
+            txtContrasena.Text = "cantinflas20";
+
             txtUsuario.GotFocus += new EventHandler(this.TextGotFocus);
             txtUsuario.LostFocus += new EventHandler(this.TextLostFocus);
             txtContrasena.GotFocus += new EventHandler(this.TextGotFocusContrasena);
@@ -35,16 +38,38 @@ namespace Digitalizador
             string imageLogo = path;
             pictureBox1.ImageLocation = GetSetting("rutaLogo").ToString().Trim() != "" ? GetSetting("rutaLogo").ToString().Trim() : imageLogo;
 
+            string a = path;
             switch (GetSetting("tema").ToString().Trim())
             {
                 case "SIGE":
                     panel1.BackColor = ColorTranslator.FromHtml("#8031A7");
+                    linkLabel1.BackColor = ColorTranslator.FromHtml("#8031A7");
+                    linkLabel3.BackColor = ColorTranslator.FromHtml("#8031A7");
+
+                    a = a.Replace(@"\bin\Debug", @"\images\imgIngresar_sige.png");
+                    bntIngresar.ImageLocation = a;
+                    bntIngresar.Refresh();
+
                     break;
                 case "BLUE":
                     panel1.BackColor = ColorTranslator.FromHtml("#0096D6");
+                    linkLabel1.BackColor = ColorTranslator.FromHtml("#0096D6");
+                    linkLabel3.BackColor = ColorTranslator.FromHtml("#0096D6");
+
+                    a = a.Replace(@"\bin\Debug", @"\images\imgIngresar_blue.png");
+                    bntIngresar.ImageLocation = a;
+                    bntIngresar.Refresh();
+
                     break;
                 case "DARK":
                     panel1.BackColor = ColorTranslator.FromHtml("#5A5A5A");
+                    linkLabel1.BackColor = ColorTranslator.FromHtml("#5A5A5A");
+                    linkLabel3.BackColor = ColorTranslator.FromHtml("#5A5A5A");
+
+                    a = a.Replace(@"\bin\Debug", @"\images\imgIngresar_dark.png");
+                    bntIngresar.ImageLocation = a;
+                    bntIngresar.Refresh();
+
                     break;
 
             }
@@ -81,9 +106,19 @@ namespace Digitalizador
         {
             Conexion con = new Conexion();
             string sql = "SELECT * FROM dbo.users WHERE [email] = '" + txtUsuario.Text.ToString().Trim() + "'";
+
+            if (GetSetting("entorno").ToString().Trim() == "")
+            {
+                SetSetting("entorno", "pruebas");
+            }
+
             DataTable odt = con.RetSqlDataTable(GetSetting("entorno").ToString().Trim(), sql);
+            //DataTable odt = con.RetSqlDataTable("Pruebas", sql);
+
+
             if (odt != null && odt.Rows.Count > 0)
             {
+               
                 //string entorno = ConfigurationManager.AppSettings["entorno"];
 
                 this.Hide();
@@ -143,6 +178,8 @@ namespace Digitalizador
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        
+        
         //bool vai = false;
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
@@ -177,8 +214,31 @@ namespace Digitalizador
             configuration.Save(ConfigurationSaveMode.Full, true);
             ConfigurationManager.RefreshSection("appSettings");
         }
+
         #endregion
 
-       
+        private void txtContrasena_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                bntIngresar_Click(null, null);
+            }
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                bntIngresar_Click(null, null);
+            }
+        }
+
+        private void cmbEntornos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                bntIngresar_Click(null, null);
+            }
+        }
     }
 }

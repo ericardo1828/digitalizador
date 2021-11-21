@@ -209,6 +209,5 @@ namespace Digitalizador
         #endregion
 
 
-       
     }
 }

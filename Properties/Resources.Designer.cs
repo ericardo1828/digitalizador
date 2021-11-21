@@ -93,6 +93,36 @@ namespace Digitalizador.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgIngresar_blue {
+            get {
+                object obj = ResourceManager.GetObject("imgIngresar_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgIngresar_dark {
+            get {
+                object obj = ResourceManager.GetObject("imgIngresar_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgIngresar_sige {
+            get {
+                object obj = ResourceManager.GetObject("imgIngresar_sige", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo_IEPC {
             get {
                 object obj = ResourceManager.GetObject("Logo IEPC", resourceCulture);

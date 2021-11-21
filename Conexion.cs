@@ -52,7 +52,6 @@ namespace Digitalizador
             DataTable dtResultado = new DataTable();
             try
             {
-
                 using (SqlConnection con = new SqlConnection(SettingsDataBase(dataBase)))
                 {
                     SqlCommand cmd = new SqlCommand(consulta, con);
