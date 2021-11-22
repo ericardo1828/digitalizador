@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
+﻿//using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace Digitalizador.Persistence
 {
@@ -17,9 +18,9 @@ namespace Digitalizador.Persistence
         //private static bool IsDbRecentlyCreated = false;
 
 
-        public static SqliteConnection GetInstance()
+        public static SQLiteConnection GetInstance()
         {
-            var db = new SqliteConnection(
+            var db = new SQLiteConnection(
                 string.Format("Data Source={0};Version=3;", DBName)
             );
 
@@ -37,16 +38,21 @@ namespace Digitalizador.Persistence
                 //var query = "INSERT INTO Users (name, lastname, birthday) VALUES (?, ?, ?)";
                 DataTable dtResultado = new DataTable();
                 try {
-                    using (var command = new SqliteCommand(query, ctx))
+                    using (var command = new SQLiteCommand(query, ctx))
                     {
                         command.ExecuteNonQuery();
+
+                        SQLiteDataAdapter sda = new SQLiteDataAdapter(command);
+                        DataSet ds = new DataSet();
+                        sda.Fill(ds);
+                        dtResultado = ds.Tables.Count > 0 ? ds.Tables[0] : new DataTable();
+                        command.Connection.Close();
+                        ctx.Dispose();
                     }
                 }
                 catch (Exception e)
                 { throw e; }
                 return dtResultado;
-
-                
             }
         }
 
@@ -58,7 +64,7 @@ namespace Digitalizador.Persistence
                 DataTable dtResultado = new DataTable();
                 try
                 {
-                    using (var command = new SqliteCommand(strPrmProc, ctx))
+                    using (var command = new SQLiteCommand(strPrmProc, ctx))
                     {
 
                         command.CommandTimeout = 0;

@@ -1,11 +1,12 @@
 ﻿using Digitalizador.Entity;
 using Digitalizador.Persistence;
-using Microsoft.Data.Sqlite;
+//using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace Digitalizador.Service
 {
@@ -19,7 +20,7 @@ namespace Digitalizador.Service
             {
                 var query = "SELECT * FROM Common.CT_RutasArchivosDigitalizador";
 
-                using (var command = new SqliteCommand(query, ctx))
+                using (var command = new SQLiteCommand(query, ctx))
                 {
                     using (var reader = command.ExecuteReader())
                     {

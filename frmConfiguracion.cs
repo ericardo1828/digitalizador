@@ -11,6 +11,7 @@ using WIA;
 using System.Management;
 using System.Configuration;
 using System.IO;
+using Digitalizador.Persistence;
 
 namespace Digitalizador
 {
@@ -32,13 +33,23 @@ namespace Digitalizador
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            string query = "";
+
             string scannerSeleccionado = lstEscaner.SelectedItem.ToString().Trim();
 
-            // actualizar valor del key entorno
-            SetSetting("scannerDefault", scannerSeleccionado);
+            //// actualizar valor del key entorno
+            //SetSetting("scannerDefault", scannerSeleccionado);
+
+            DBContext dbsqlite = new DBContext();
+            query = "update Common.CT_ConfiguracionClaveValor set valor = '" + scannerSeleccionado + "' where clave = 'scannerDefault'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
 
             string objAppConfigValue_scannerDefault = "";
-            objAppConfigValue_scannerDefault = GetSetting("scannerDefault");
+            //objAppConfigValue_scannerDefault = GetSetting("scannerDefault");
+
+            query = "select valor from Common.CT_ConfiguracionClaveValor where clave = 'scannerDefault')";
+            DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query) == null ? dbsqlite.dbContext_RetSqlDataTable(query) : new DataTable();
+            objAppConfigValue_scannerDefault = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["scannerDefault"].ToString().Trim() : "";
         }
         private void btnAgregarDir_Click(object sender, EventArgs e)
         {

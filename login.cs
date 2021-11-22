@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Digitalizador.Persistence;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -76,14 +77,33 @@ namespace Digitalizador
         }
         private void cmbEntornos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string query = "";
+
             string entornoSeleccionado = cmbEntornos.SelectedItem.ToString().Trim();
 
-            // actualizar valor del key entorno
-            SetSetting("entorno", entornoSeleccionado);
+            //// actualizar valor del key entorno
+            //SetSetting("entorno", entornoSeleccionado);
+
+            DBContext dbsqlite = new DBContext();
+            query = "update ConfClaveValor set valor = '" + entornoSeleccionado + "' where clave = 'entorno'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+
+
         }
         private void bntIngresar_Click(object sender, EventArgs e)
         {
-            if (cmbEntornos.SelectedItem != null && cmbEntornos.SelectedItem.ToString().Trim() != "")
+            string query = "";
+
+            DBContext dbsqlite = new DBContext();
+            query = "select valor from ConfClaveValor where clave = 'entorno'";
+            DataTable odtEntorno = dbsqlite.dbContext_RetSqlDataTable(query);
+            
+            if(odtEntorno != null && odtEntorno.Rows.Count > 0)
+            {
+                validarAcceso(1);
+
+            }
+            else if (cmbEntornos.SelectedItem != null && cmbEntornos.SelectedItem.ToString().Trim() != "")
             {
                 string entornoSeleccionado = cmbEntornos.SelectedItem.ToString().Trim();
 
@@ -91,7 +111,7 @@ namespace Digitalizador
                 //SetSetting("entorno", entornoSeleccionado);
 
                 // validar acceso al sistema
-                validarAcceso();
+                validarAcceso(2);
             }
             else
             {
@@ -102,33 +122,57 @@ namespace Digitalizador
         #endregion
 
         #region metodos de acciones propias o conexion hacia base de datos
-        public void validarAcceso()
+        public void validarAcceso(int opc)
         {
-            Conexion con = new Conexion();
-            string sql = "SELECT * FROM dbo.users WHERE [email] = '" + txtUsuario.Text.ToString().Trim() + "'";
-
-            if (GetSetting("entorno").ToString().Trim() == "")
+            if(opc == 1)
             {
-                SetSetting("entorno", "pruebas");
-            }
+                string query = "";
 
-            DataTable odt = con.RetSqlDataTable(GetSetting("entorno").ToString().Trim(), sql);
-            //DataTable odt = con.RetSqlDataTable("Pruebas", sql);
+                DBContext dbsqlite = new DBContext();
+                query = "select valor from ConfClaveValor where clave = 'entorno'";
+                DataTable odtEntorno = dbsqlite.dbContext_RetSqlDataTable(query);
+
+                Conexion con = new Conexion();
+                string sql = "SELECT * FROM dbo.users WHERE [email] = '" + txtUsuario.Text.ToString().Trim() + "'";
 
 
-            if (odt != null && odt.Rows.Count > 0)
-            {
-               
-                //string entorno = ConfigurationManager.AppSettings["entorno"];
+                DataTable odt = new DataTable();
+                if (odtEntorno != null && odtEntorno.Rows.Count > 0)
+                {
+                    odt = con.RetSqlDataTable(odtEntorno.Rows[0]["valor"].ToString().Trim(), sql);
+                }
 
-                this.Hide();
-                frmPrincipal frm = new frmPrincipal();
-                frm.Show();
+
+                //if (GetSetting("entorno").ToString().Trim() == "")
+                //{
+                //    SetSetting("entorno", "pruebas");
+                //}
+
+                    
+                //DataTable odt = con.RetSqlDataTable("Pruebas", sql);
+
+
+                if (odt != null && odt.Rows.Count > 0)
+                {
+                    //string entorno = ConfigurationManager.AppSettings["entorno"];
+
+                    this.Hide();
+                    frmPrincipal frm = new frmPrincipal();
+                    frm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Credenciales Invalidas");
+                }
+
+
             }
             else
             {
-                MessageBox.Show("Credenciales Invalidas");
+
+
             }
+            
         }
         #endregion
 

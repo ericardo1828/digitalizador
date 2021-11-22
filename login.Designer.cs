@@ -30,26 +30,26 @@ namespace Digitalizador
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.bntIngresar = new System.Windows.Forms.PictureBox();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.cmbEntornos = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
-            this.bntIngresar = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bntIngresar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -62,6 +62,16 @@ namespace Digitalizador
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(307, 330);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Digitalizador.Properties.Resources.Logo_IEPC;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 83);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(277, 170);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // panel3
             // 
@@ -90,6 +100,18 @@ namespace Digitalizador
             this.panel2.Size = new System.Drawing.Size(466, 42);
             this.panel2.TabIndex = 20;
             // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.BackColor = System.Drawing.Color.Transparent;
+            this.btnMinimizar.Image = global::Digitalizador.Properties.Resources._;
+            this.btnMinimizar.Location = new System.Drawing.Point(415, 8);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(21, 24);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnMinimizar.TabIndex = 12;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
@@ -101,6 +123,29 @@ namespace Digitalizador
             this.lblTitulo.TabIndex = 5;
             this.lblTitulo.Text = "Digitalizador";
             // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.Image = global::Digitalizador.Properties.Resources.X;
+            this.btnCerrar.Location = new System.Drawing.Point(442, 8);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(21, 24);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCerrar.TabIndex = 11;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // bntIngresar
+            // 
+            this.bntIngresar.Image = global::Digitalizador.Properties.Resources.imgIngresar_blue;
+            this.bntIngresar.Location = new System.Drawing.Point(93, 211);
+            this.bntIngresar.Name = "bntIngresar";
+            this.bntIngresar.Size = new System.Drawing.Size(282, 33);
+            this.bntIngresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bntIngresar.TabIndex = 19;
+            this.bntIngresar.TabStop = false;
+            this.bntIngresar.Click += new System.EventHandler(this.bntIngresar_Click);
+            // 
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
@@ -109,6 +154,7 @@ namespace Digitalizador
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(421, 13);
             this.linkLabel3.TabIndex = 0;
+            this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "_____________________________________________________________________";
             // 
             // cmbEntornos
@@ -125,6 +171,7 @@ namespace Digitalizador
             this.cmbEntornos.Name = "cmbEntornos";
             this.cmbEntornos.Size = new System.Drawing.Size(121, 25);
             this.cmbEntornos.TabIndex = 17;
+            this.cmbEntornos.SelectedIndexChanged += new System.EventHandler(this.cmbEntornos_SelectedIndexChanged);
             this.cmbEntornos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbEntornos_KeyPress);
             // 
             // label1
@@ -161,6 +208,7 @@ namespace Digitalizador
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(421, 13);
             this.linkLabel1.TabIndex = 0;
+            this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "_____________________________________________________________________";
             // 
             // txtUsuario
@@ -176,51 +224,6 @@ namespace Digitalizador
             this.txtUsuario.Text = "Usuario";
             this.txtUsuario.UseWaitCursor = true;
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.BackColor = System.Drawing.Color.Transparent;
-            this.btnMinimizar.Image = global::Digitalizador.Properties.Resources._;
-            this.btnMinimizar.Location = new System.Drawing.Point(415, 8);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(21, 24);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnMinimizar.TabIndex = 12;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCerrar.Image = global::Digitalizador.Properties.Resources.X;
-            this.btnCerrar.Location = new System.Drawing.Point(442, 8);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(21, 24);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnCerrar.TabIndex = 11;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // bntIngresar
-            // 
-            this.bntIngresar.Image = global::Digitalizador.Properties.Resources.imgIngresar_blue;
-            this.bntIngresar.Location = new System.Drawing.Point(93, 211);
-            this.bntIngresar.Name = "bntIngresar";
-            this.bntIngresar.Size = new System.Drawing.Size(282, 33);
-            this.bntIngresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.bntIngresar.TabIndex = 19;
-            this.bntIngresar.TabStop = false;
-            this.bntIngresar.Click += new System.EventHandler(this.bntIngresar_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Digitalizador.Properties.Resources.Logo_IEPC;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 83);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(277, 170);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // login
             // 
@@ -241,6 +244,7 @@ namespace Digitalizador
             this.Text = "login";
             this.Load += new System.EventHandler(this.login_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -248,7 +252,6 @@ namespace Digitalizador
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bntIngresar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
