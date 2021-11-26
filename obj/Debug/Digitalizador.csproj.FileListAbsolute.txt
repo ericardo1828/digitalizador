@@ -209,3 +209,6 @@ C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Digitalizador.e
 C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Digitalizador.application
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.exe.manifest
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.application
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Newtonsoft.Json.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Newtonsoft.Json.xml
+C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.ConsumirServicios.resources

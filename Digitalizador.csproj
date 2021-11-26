@@ -27,7 +27,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -82,6 +82,9 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="OpenCvSharp">
       <HintPath>dll\net461\OpenCvSharp.dll</HintPath>
     </Reference>
@@ -136,8 +139,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClasesGenericas.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Entity\RutasArchivosDigitalizador.cs" />
+    <Compile Include="ConsumirServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsumirServicios.Designer.cs">
+      <DependentUpon>ConsumirServicios.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConfiguracion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +194,9 @@
       <DependentUpon>RecortarImagenes.cs</DependentUpon>
     </Compile>
     <Compile Include="Service\RutasArchivosDigitalizadorService.cs" />
+    <EmbeddedResource Include="ConsumirServicios.resx">
+      <DependentUpon>ConsumirServicios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguracion.resx">
       <DependentUpon>frmConfiguracion.cs</DependentUpon>
     </EmbeddedResource>
