@@ -205,3 +205,7 @@ C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\SQLitePCL.dll
 C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\System.Runtime.InteropServices.dll
 C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\System.Data.SQLite.xml
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.Hilos.resources
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Digitalizador.exe.manifest
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Digitalizador.application
+C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.exe.manifest
+C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.application

@@ -113,6 +113,7 @@ namespace Digitalizador
                 }
             }
 
+
             //btnCalcular.Enabled = true;
             //SetEnabled_btnCalcular(true);
 
