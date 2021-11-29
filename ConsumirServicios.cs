@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace Digitalizador
@@ -23,7 +24,284 @@ namespace Digitalizador
 
         private void btnConsumirServicio_Click(object sender, EventArgs e)
         {
-            GetItems();
+            //GetItems();
+            //GetLogin();
+            //getLogin2();
+            GetLogin3();
+        }
+
+        private void enviarFile64()
+        {
+            
+
+        }
+
+        private void GetLogin3()
+        {
+            /////////////////////////////////////////////////////
+            var lo = new Login
+            {
+                email = "ericardo.munoz@iepcjalisco.org.mx",
+                password = "cantinflas20"
+            };
+            string json = JsonConvert.SerializeObject(lo);
+            string stringToken = PostItem(json);
+            JObject SearchNode = JObject.Parse(stringToken);
+            string token = ParseNode(SearchNode,"token");
+            /////////////////////////////////////////////////////
+
+
+            ///////////////////////////////////
+            // enviar un archivo en base 64
+            var file64 = new fileBase64
+            {
+                filename = "codigoQR4.pdf",
+                folder = "urnas",
+                file = convertFileToBase64(@"C:\pdfsqr\pdfsqr1.pdf")
+            };
+            string jsonFile = JsonConvert.SerializeObject(file64);
+            PostItemFile64(jsonFile);
+            ////////////////////////////////////
+
+            // Obtener la propiedades result en una lista 
+            //IList<JToken> results = SearchNode["token"].Children().ToList();
+
+        }
+
+        private string convertFileToBase64(string filePath)
+        {
+            byte[] AsBytes = File.ReadAllBytes(filePath);
+            String AsBase64String = Convert.ToBase64String(AsBytes);
+            
+            return AsBase64String;
+        }
+
+
+
+
+        /// <summary>
+        /// Post for a REST api
+        /// </summary>
+        /// <param name="token">authorization token</param>
+        /// <param name="url">REST url for the resource</param>
+        /// <param name="content">content</param>
+        /// <returns>response from the rest url</returns>
+        public async Task<JObject> PostAsync(string token, string url, string content)
+        {
+            byte[] data = Encoding.UTF8.GetBytes(content);
+            WebRequest request = WebRequest.Create(url);
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            request.Headers.Add("Authorization", "Bearer " + token);
+            request.ContentLength = data.Length;
+
+            using (Stream stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            try
+            {
+                WebResponse response = await request.GetResponseAsync();
+                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                {
+                    string responseContent = reader.ReadToEnd();
+                    JObject adResponse =
+                        Newtonsoft.Json.JsonConvert.DeserializeObject<JObject>(responseContent);
+                    return adResponse;
+                }
+            }
+            catch (WebException webException)
+            {
+                if (webException.Response != null)
+                {
+                    using (StreamReader reader = new StreamReader(webException.Response.GetResponseStream()))
+                    {
+                        string responseContent = reader.ReadToEnd();
+                        return Newtonsoft.Json.JsonConvert.DeserializeObject<JObject>(responseContent); ;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private string ParseNode(JObject bookJSONFile, string node)
+        {
+            string contentNode = null;
+            //JObject store = null;
+            //JObject goods = null;
+            //JArray bookList = null;
+
+            if (bookJSONFile != null && bookJSONFile[node] != null)
+            {
+                contentNode = (string)bookJSONFile[node];
+                
+                //store = bookJson[0];
+                //goods = store["goods"];
+
+                //if (goods["book"] != null)
+                //{
+                //    bookList = (JArray)goods["book"];
+                //}
+            }
+            else
+            {
+                throw new Exception("File is empty, or Store node not found.");
+            }
+            return contentNode;
+        }
+
+        private static string PostItemFile64(string data)
+        {
+            var url = $"https://imgsrv.iepcjalisco.org.mx/catd/imagenprep";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            //string json = $"{{\"data\":\"{data}\"}}";
+            string json = data;
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (Stream strReader = response.GetResponseStream())
+                    {
+                        if (strReader == null) return "";
+                        using (StreamReader objReader = new StreamReader(strReader))
+                        {
+                            string responseBody = objReader.ReadToEnd();
+
+                            return responseBody;
+
+
+                            // Do something with responseBody
+                            //Console.WriteLine(responseBody);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                // Handle error
+                return "error";
+            }
+        }
+
+        private static string PostItem(string data)
+        {
+            var url = $"https://services-dev.iepcjalisco.org.mx:8443/api/v1/login";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            //string json = $"{{\"data\":\"{data}\"}}";
+            string json = data;
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (Stream strReader = response.GetResponseStream())
+                    {
+                        if (strReader == null) return "";
+                        using (StreamReader objReader = new StreamReader(strReader))
+                        {
+                            string responseBody = objReader.ReadToEnd();
+
+                            return responseBody;
+
+
+                            // Do something with responseBody
+                            //Console.WriteLine(responseBody);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                // Handle error
+                return "error";
+            }
+        }
+
+
+
+        private void getLogin2()
+        {
+            var lo = new Login
+            {
+                email = "rosymbke@gmail.com",
+                password = "tla_ros.2021"
+            };
+
+            var url = $"https://services-dev.iepcjalisco.org.mx:8443/api/v1/login";
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpWebRequest.ContentType = "application/json; charset=utf-8";
+
+            httpWebRequest.Method = WebRequestMethods.Http.Put;
+            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
+            string jsonData = jsSerializer.Serialize(lo);
+            byte[] arrData = Encoding.UTF8.GetBytes(jsonData);
+
+            httpWebRequest.ContentLength = arrData.Length;
+            httpWebRequest.Expect = "application/json";
+            using (var dataStream = httpWebRequest.GetRequestStream())
+            {
+                dataStream.Write(arrData, 0, arrData.Length);
+                dataStream.Close();
+            }
+            var response = (HttpWebResponse)httpWebRequest.GetResponse();
+        }
+
+       
+
+        private void GetLogin()
+        {
+            var lo = new Login
+            {
+                email = "rosymbke@gmail.com",
+                password = "tla_ros.2021"
+            };
+
+            var url = $"https://services-dev.iepcjalisco.org.mx:8443/api/v1/login";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "POST";
+            request.ContentType = "application/json; charset=utf-8";
+            request.Timeout = 30000;
+
+            string json = JsonConvert.SerializeObject(lo);
+            byte[] byteArray = Encoding.UTF8.GetBytes(json);
+            request.ContentLength = byteArray.Length;
+
+            var dataStream = new StreamWriter(request.GetRequestStream()); 
+                dataStream.Write(byteArray);
+                dataStream.Close();
+            
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                //dataStream = response.GetResponseStream();
+                using (Stream stream = response.GetResponseStream())
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string responseFromServer = reader.ReadToEnd();
+                    }
+                }
+            }
+
         }
 
 
@@ -66,7 +344,7 @@ namespace Digitalizador
                                 searchResults.Add(searchResult);
                             }
 
-                            if(searchResults != null && searchResults.Count > 0)
+                            if (searchResults != null && searchResults.Count > 0)
                             {
                                 dataGridView1.DataSource = searchResults;
                                 dataGridView1.Refresh();
@@ -11526,30 +11804,30 @@ namespace Digitalizador
 
         //public static class claseGenerica
         //{
-            //public static DataTable ToDataTable<T>(this IList<T> data)
-            //{
-            //    PropertyDescriptorCollection props =
-            //    TypeDescriptor.GetProperties(typeof(T));
-            //    DataTable table = new DataTable();
-            //    for (int i = 0; i < props.Count; i++)
-            //    {
-            //        PropertyDescriptor prop = props[i];
-            //        table.Columns.Add(prop.Name, prop.PropertyType);
-            //    }
-            //    object[] values = new object[props.Count];
-            //    foreach (T item in data)
-            //    {
-            //        for (int i = 0; i < values.Length; i++)
-            //        {
-            //            values[i] = props[i].GetValue(item);
-            //        }
-            //        table.Rows.Add(values);
-            //    }
-            //    return table;
-            //}
+        //public static DataTable ToDataTable<T>(this IList<T> data)
+        //{
+        //    PropertyDescriptorCollection props =
+        //    TypeDescriptor.GetProperties(typeof(T));
+        //    DataTable table = new DataTable();
+        //    for (int i = 0; i < props.Count; i++)
+        //    {
+        //        PropertyDescriptor prop = props[i];
+        //        table.Columns.Add(prop.Name, prop.PropertyType);
+        //    }
+        //    object[] values = new object[props.Count];
+        //    foreach (T item in data)
+        //    {
+        //        for (int i = 0; i < values.Length; i++)
+        //        {
+        //            values[i] = props[i].GetValue(item);
+        //        }
+        //        table.Rows.Add(values);
+        //    }
+        //    return table;
+        //}
         //}
 
-        
+
 
         public class Casilla
         {
@@ -11566,6 +11844,19 @@ namespace Digitalizador
             public string Nomenclatura { get; set; }
             public string Municipio { get; set; }
             public int Distrito { get; set; }
+        }
+
+        public class Login
+        {
+            public string email { get; set; }
+            public string password { get; set; }
+        }
+
+        public class fileBase64
+        {
+            public string filename { get; set; }
+            public string folder { get; set; }
+            public string file { get; set; }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

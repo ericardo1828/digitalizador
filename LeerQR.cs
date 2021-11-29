@@ -128,7 +128,7 @@ namespace Digitalizador
             PointF firstLocation = new PointF(10f, 10f);
             PointF secondLocation = new PointF(10f, 50f);
 
-            string imageFilePath = @"C:\Users\Ericardo\Downloads\codigoBarrasActaPNG_chido2.png";
+            string imageFilePath = @"C:\Users\programador\Downloads\codigos\codigoBarrasActaPNG_chido2.png";
 
             /////////////// NO FUNCIONA
             //Bitmap bitmap = (Bitmap)Image.FromFile(imageFilePath);//load the image file

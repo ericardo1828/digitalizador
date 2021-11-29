@@ -60,7 +60,7 @@ namespace Digitalizador
             //CroppedImage.Save(@"C:\Users\Ericardo\Downloads\barras1.jpg");
 
             //// Guardar la Imagen de QR
-            CroppedImage.Save(@"C:\Users\Ericardo\Downloads\qr1.jpg");
+            CroppedImage.Save(@"C:\Users\programador\Downloads\qr1.jpg");
 
             pictureBox1.Image = CroppedImage;
             pictureBox1.Refresh();
@@ -100,7 +100,7 @@ namespace Digitalizador
         private void btnLeerCodigoBarras_Click(object sender, EventArgs e)
         {
             string[] arr;
-            arr = ReadBarCode(@"C:\Users\Ericardo\Downloads\barras1.jpg");
+            arr = ReadBarCode(@"C:\Users\programador\Downloads\barras1.jpg");
             string cadenaObtenida = "";
             for (int x = 0; x < arr.Length; x++)
             {
@@ -129,7 +129,7 @@ namespace Digitalizador
         private void btnLeerCodigoQR_Click(object sender, EventArgs e)
         {
             string[] arr;
-            arr = ReadQRCode(@"C:\Users\Ericardo\Downloads\qr1.jpg");
+            arr = ReadQRCode(@"C:\Users\programador\Downloads\qr1.jpg");
             string cadenaObtenida = "";
             for (int x = 0; x < arr.Length; x++)
             {
@@ -157,7 +157,7 @@ namespace Digitalizador
         public void ubicarCodigoQR()
         {
             // Crear bitmap la imagen seleccionada
-            Bitmap source = new Bitmap(@"C:\Users\Ericardo\Downloads\scan_qr.jpg");
+            Bitmap source = new Bitmap(@"C:\Users\programador\Downloads\codigos\scan_qr.jpg");
             string cadenaObtenida = "";
 
             for (int x = 1; x <= 5; x++)
@@ -179,11 +179,11 @@ namespace Digitalizador
                             Bitmap CroppedImage = CropImage(source, section);
 
                             //// Guardar la Imagen de QR
-                            CroppedImage.Save(@"C:\Users\Ericardo\Downloads\qrs\qr_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
+                            CroppedImage.Save(@"C:\Users\programador\Downloads\codigos\qrs\qr_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
 
                             // Lee la imagen actual para ver si puede leer un codigo qr
                             string[] arr;
-                            arr = ReadQRCode(@"C:\Users\Ericardo\Downloads\qrs\qr_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
+                            arr = ReadQRCode(@"C:\Users\programador\Downloads\codigos\qrs\qr_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
 
                             for (int z = 0; z < arr.Length; z++)
                             {
@@ -204,7 +204,7 @@ namespace Digitalizador
         public void ubicarCodigoBarras()
         {
             // Crear bitmap la imagen seleccionada
-            Bitmap source = new Bitmap(@"C:\Users\Ericardo\Downloads\0570B_A (1).jpg");
+            Bitmap source = new Bitmap(@"C:\Users\programador\Downloads\0570B_A (1).jpg");
             string cadenaObtenida = "";
 
             for (int x = 1; x <= 5; x++)
@@ -226,11 +226,11 @@ namespace Digitalizador
                             Bitmap CroppedImage = CropImage(source, section);
 
                             //// Guardar la Imagen de QR
-                            CroppedImage.Save(@"C:\Users\Ericardo\Downloads\barras\barra_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
+                            CroppedImage.Save(@"C:\Users\programador\Downloads\barras\barra_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
 
                             // Lee la imagen actual para ver si puede leer un codigo qr
                             string[] arr;
-                            arr = ReadBarCode(@"C:\Users\Ericardo\Downloads\barras\barra_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
+                            arr = ReadBarCode(@"C:\Users\programador\Downloads\barras\barra_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
 
                             for (int z = 0; z < arr.Length; z++)
                             {
@@ -251,7 +251,7 @@ namespace Digitalizador
         private void btnUbicarCodigo_Click(object sender, EventArgs e)
         {
             ubicarCodigoQR();
-            ubicarCodigoBarras();
+            //ubicarCodigoBarras();
         }
     }
 }

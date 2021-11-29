@@ -282,3 +282,4 @@ C:\Users\ericardo\Documents\Proyectos\digitalizador\obj\Debug\Digitalizador.exe.
 C:\Users\ericardo\Documents\Proyectos\digitalizador\obj\Debug\Digitalizador.application
 C:\Users\ericardo\Documents\Proyectos\digitalizador\obj\Debug\Digitalizador.csproj.CopyComplete
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.MonitoreoFilesDirectorio.resources
+C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.crud_pdf.resources
