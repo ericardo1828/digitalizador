@@ -16,7 +16,7 @@ namespace Digitalizador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ConsumirServicios());
+            Application.Run(new login());
         }
     }
 }

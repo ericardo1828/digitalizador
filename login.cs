@@ -1,5 +1,8 @@
 ﻿using Digitalizador.Persistence;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -11,6 +14,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Digitalizador
 {
@@ -90,7 +94,36 @@ namespace Digitalizador
 
 
         }
+
         private void bntIngresar_Click(object sender, EventArgs e)
+        {
+            string query = "";
+
+            DBContext dbsqlite = new DBContext();
+            query = "select valor from ConfClaveValor where clave = 'entorno'";
+            DataTable odtEntorno = dbsqlite.dbContext_RetSqlDataTable(query);
+
+            if (odtEntorno != null && odtEntorno.Rows.Count > 0)
+            {
+                getLogin(txtUsuario.Text.ToString().Trim(),txtContrasena.Text.ToString().Trim());
+            }
+            //else if (cmbEntornos.SelectedItem != null && cmbEntornos.SelectedItem.ToString().Trim() != "")
+            //{
+            //    string entornoSeleccionado = cmbEntornos.SelectedItem.ToString().Trim();
+
+            //    //// actualizar valor del key entorno
+            //    //SetSetting("entorno", entornoSeleccionado);
+
+            //    // validar acceso al sistema
+            //    validarAcceso(2);
+            //}
+            else
+            {
+                MessageBox.Show("Selecciona un entorno valido", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+        private void bntIngresar_Click_2(object sender, EventArgs e)
         {
             string query = "";
 
@@ -122,6 +155,106 @@ namespace Digitalizador
         #endregion
 
         #region metodos de acciones propias o conexion hacia base de datos
+        private void getLogin(string email, string pass)
+        {
+            rest res = new rest();
+            convert conv = new convert();
+
+            /////////////////////////////////////////////////////
+            string e, p = "";
+            e = email == "" ? "" : email;
+            p = pass == "" ? "" : pass;
+
+            var lo = new clogin
+            {
+                email = e,
+                password = p
+            };
+
+            //var lo = new clogin
+            //{
+            //    email = "ericardo.munoz@iepcjalisco.org.mx",
+            //    password = "cantinflas20"
+            //};
+
+            string json = JsonConvert.SerializeObject(lo);
+            string stringToken = rest.PostItem(json);
+
+            bool bndUserPassCorrect = true;
+
+            if(stringToken.Contains("\"response\":false"))
+            {
+                Dictionary<string, string> dictObjResponse = ((JToken)(JObject.Parse(stringToken))).ToObject<Dictionary<string, string>>();
+                if (dictObjResponse != null)
+                {
+                    foreach (var dic_obj in dictObjResponse)
+                    {
+                        if (dic_obj.Key.Contains("response"))
+                        {
+                            if (dic_obj.Value.ToString().Trim() == "False")
+                            {
+                                JObject SearchNodeResponse = JObject.Parse(stringToken);
+                                string message = conv.ParseNode(SearchNodeResponse, "message");
+
+                                bndUserPassCorrect = false;
+
+                                MessageBox.Show(message, "Precaucion!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                }
+            }
+            
+
+            ////////
+            if (bndUserPassCorrect)
+            {
+                JObject SearchNode = JObject.Parse(stringToken);
+                string token = conv.ParseNode(SearchNode, "token");
+
+                string mensaje = conv.ParseNode(SearchNode, "message");
+                string status = conv.ParseNode(SearchNode, "status");
+
+                int bndAcceso = 0;
+
+                if (status == "200")
+                {
+                    JEnumerable<JToken> results = SearchNode["perfiles"].Children();
+
+                    foreach (JToken result in results)
+                    {
+                        // Agregar a un diccionario los nodos de json object
+                        Dictionary<string, string> dictObj = result.ToObject<Dictionary<string, string>>();
+
+                        foreach (var dic_obj in dictObj)
+                        {
+                            if (dic_obj.Key.Contains("fkRole"))
+                            {
+                                if (dic_obj.Value.ToString().Trim() == "65")
+                                {
+                                    bndAcceso++;
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (bndAcceso > 0)
+                {
+                    this.Hide();
+                    frmPrincipal frm = new frmPrincipal();
+                    frm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Credenciales Invalidas o sin acceso al Digitalizador");
+                }
+
+            }
+        }
+
+
         public void validarAcceso(int opc)
         {
             if(opc == 1)

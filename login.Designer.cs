@@ -137,7 +137,7 @@ namespace Digitalizador
             // 
             // bntIngresar
             // 
-            this.bntIngresar.Image = global::Digitalizador.Properties.Resources.imgIngresar_blue;
+            this.bntIngresar.Image = global::Digitalizador.Properties.Resources.imgIngresar_sige;
             this.bntIngresar.Location = new System.Drawing.Point(93, 211);
             this.bntIngresar.Name = "bntIngresar";
             this.bntIngresar.Size = new System.Drawing.Size(282, 33);
