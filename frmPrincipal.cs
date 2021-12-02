@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Digitalizador.Persistence;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -31,18 +32,49 @@ namespace Digitalizador
         #region eventos de controles de formulario
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            //obtener datos desde SQLite
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+
+            query = "select valor from ConfClaveValor where clave = 'nombreAplicacion'";
+            DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+            string nombreAplicacion = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'rutaLogo'";
+            DataTable odtConf2 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string rutaLogo = odtConf2.Rows.Count > 0 ? odtConf2.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'tema'";
+            DataTable odtConf3 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string tema = odtConf3.Rows.Count > 0 ? odtConf3.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'entorno'";
+            DataTable odtConf4 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string entorno = odtConf4.Rows.Count > 0 ? odtConf4.Rows[0]["valor"].ToString().Trim() : "";
+
+            //-----------------------------------------------------------------
+
             lblVersion.Text = "digi 1.1";
-            lblEntorno.Text = objAppConfigValue_entorno;
+            lblEntorno.Text = entorno;  //objAppConfigValue_entorno;
             lblTitulo.Text = GetSetting("nombreAplicacion") != "" ? GetSetting("nombreAplicacion").ToString().Trim() : lblTitulo.Text;
+
+            //string ruta = System.Environment.CurrentDirectory.ToString().Trim();
+            //string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            //path = path.Replace(@"\bin\Debug", @"\images\refresh_icon.png");
+            //string imageLogo = path;
 
             string ruta = System.Environment.CurrentDirectory.ToString().Trim();
             string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
             path = path.Replace(@"\bin\Debug", @"\images\refresh_icon.png");
             string imageLogo = path;
+            picLogo.ImageLocation = rutaLogo != "" ? rutaLogo : imageLogo; //GetSetting("rutaLogo").ToString().Trim() != "" ? GetSetting("rutaLogo").ToString().Trim() : imageLogo;
 
-            picLogo.ImageLocation = GetSetting("rutaLogo").ToString().Trim() != "" ? GetSetting("rutaLogo").ToString().Trim() : imageLogo;
+            string a = path;
 
-            switch (GetSetting("tema").ToString().Trim())
+            //picLogo.ImageLocation = GetSetting("rutaLogo").ToString().Trim() != "" ? GetSetting("rutaLogo").ToString().Trim() : imageLogo;
+
+            //switch (GetSetting("tema").ToString().Trim())
+            switch(tema)
             {
                 case "SIGE":
                     panelTitulo.BackColor = ColorTranslator.FromHtml("#8031A7");

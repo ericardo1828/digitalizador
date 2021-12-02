@@ -41,15 +41,16 @@ namespace Digitalizador
             //SetSetting("scannerDefault", scannerSeleccionado);
 
             DBContext dbsqlite = new DBContext();
-            query = "update Common.CT_ConfiguracionClaveValor set valor = '" + scannerSeleccionado + "' where clave = 'scannerDefault'";
+            query = "update ConfClaveValor set valor = '" + scannerSeleccionado + "' where clave = 'scannerDefault'";
             dbsqlite.dbContext_RetSqlDataTable(query);
 
             string objAppConfigValue_scannerDefault = "";
             //objAppConfigValue_scannerDefault = GetSetting("scannerDefault");
 
-            query = "select valor from Common.CT_ConfiguracionClaveValor where clave = 'scannerDefault')";
-            DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query) == null ? dbsqlite.dbContext_RetSqlDataTable(query) : new DataTable();
-            objAppConfigValue_scannerDefault = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["scannerDefault"].ToString().Trim() : "";
+            query = "select valor from ConfClaveValor where clave = 'scannerDefault')";
+            //DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query) == null ? dbsqlite.dbContext_RetSqlDataTable(query) : new DataTable();
+            DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+            objAppConfigValue_scannerDefault = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
         }
         private void btnAgregarDir_Click(object sender, EventArgs e)
         {
@@ -57,24 +58,35 @@ namespace Digitalizador
             {
                 Conexion con = new Conexion();
 
-                if(cmbTipoDocumento.SelectedValue != null)
+                //obtener datos desde SQLite
+                DBContext dbsqlite = new DBContext();
+                string query = "select valor from ConfClaveValor where clave = 'entorno'";
+                //DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query) == null || dbsqlite.dbContext_RetSqlDataTable(query).Rows.Count  == 0 ? dbsqlite.dbContext_RetSqlDataTable(query) : new DataTable();
+                DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+                string entorno = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
+
+
+                if (cmbTipoDocumento.SelectedValue != null)
                 {
                     //insetar la ruta
                     string tipoDoc = cmbTipoDocumento.SelectedValue.ToString().Trim();
                     string ruta = txtRuta.Text.ToString().Trim();
-                    string query = "insert into  Common.CT_RutasArchivosDigitalizador values ('" + tipoDoc + "','" + ruta + "',null,null,null ) ";
+                    query = "insert into RutasArchDig (fkDocumento,rutaDir,created_at,updated_at,deleted_at) values ('" + tipoDoc + "','" + ruta + "',null,null,null ) ";
+                    dbsqlite.dbContext_RetSqlDataTable(query);
 
-                    con.RetSqlDataTable(GetSetting("entorno").ToString().Trim(), query);
-                }
-                else if(cmbTipoDocumento.Text.ToString().Trim() != "" && cmbTipoDocumento.SelectedValue == null)
-                {
-                    //insetar la ruta
-                    string tipoDoc = cmbTipoDocumento.Text.ToString().Trim();
-                    string ruta = txtRuta.Text.ToString().Trim();
-                    string query = "insert into  Common.CT_RutasArchivosDigitalizador values ('" + tipoDoc + "','" + ruta + "',null,null,null ) ";
+                    //con.RetSqlDataTable(entorno, query);
 
-                    con.RetSqlDataTable(GetSetting("entorno").ToString().Trim(), query);
                 }
+                //else if(cmbTipoDocumento.Text.ToString().Trim() != "" && cmbTipoDocumento.SelectedValue == null)
+                //{
+                //    //insetar la ruta
+                //    string tipoDoc = cmbTipoDocumento.Text.ToString().Trim();
+                //    string ruta = txtRuta.Text.ToString().Trim();
+                //    query = "insert into RutasArchDig (fkDocumento,rutaDir,created_at,updated_at,deleted_at) values ('" + tipoDoc + "','" + ruta + "',null,null,null ) ";
+                //    dbsqlite.dbContext_RetSqlDataTable(query);
+
+                //    //con.RetSqlDataTable(entorno, query);
+                //}
 
                 gridRutasDir.DataSource = ObtenerRutasDir();
                 gridRutasDir.Refresh();
@@ -84,9 +96,6 @@ namespace Digitalizador
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
-
-
-
 
         }
         #endregion
@@ -117,12 +126,20 @@ namespace Digitalizador
         {
             try
             {
-                Conexion con = new Conexion();
                 string query = "";
-                
+                string entorno = "";
+
+                //obtener datos desde SQLite
+                DBContext dbsqlite = new DBContext();
+                query = "select valor from ConfClaveValor where clave = 'entorno'";
+                //DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query) == null || dbsqlite.dbContext_RetSqlDataTable(query).Rows.Count  == 0 ? dbsqlite.dbContext_RetSqlDataTable(query) : new DataTable();
+                DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+                entorno = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
+
                 //Obtener los tipos de documentos
+                Conexion con = new Conexion();
                 query = "select * from Common.CS_Documentos";
-                DataTable odt = con.RetSqlDataTable(GetSetting("entorno").ToString().Trim(), query);
+                DataTable odt = con.RetSqlDataTable(entorno, query);
 
                 return odt;
 
@@ -137,15 +154,23 @@ namespace Digitalizador
         {
             try
             {
-                Conexion con = new Conexion();
                 string query = "";
 
+                //obtener datos desde SQLite
+                DBContext dbsqlite = new DBContext();
+                string entorno = "";
+                query = "select valor from ConfClaveValor where clave = 'entorno'";
+                //DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query) == null ? dbsqlite.dbContext_RetSqlDataTable(query) : new DataTable();
+                DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+                entorno = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
+
                 //Obtener los tipos de documentos
-                query = "select cd.pkDocumento, cd.documento, rad.rutaDir from Common.CT_RutasArchivosDigitalizador rad left join Common.CS_Documentos cd on rad.fkDocumento = cd.pkDocumento";
-                DataTable odt = con.RetSqlDataTable(GetSetting("entorno").ToString().Trim(), query);
+                Conexion con = new Conexion();
+                query = "select distinct cd.pkDocumento, cd.documento, rad.rutaDir from RutasArchDig rad left join Documentos cd on rad.fkDocumento = cd.pkDocumento";
+                //DataTable odt = dbsqlite.dbContext_RetSqlDataTable(query) == null ? dbsqlite.dbContext_RetSqlDataTable(query) : new DataTable();
+                DataTable odt = dbsqlite.dbContext_RetSqlDataTable(query);
 
                 return odt;
-
             }
             catch (Exception ex)
             {
@@ -193,9 +218,30 @@ namespace Digitalizador
 
         public void LlenarDatosApariencia()
         {
-            txtNombreAplicacion.Text = GetSetting("nombreAplicacion").ToString().Trim();
-            cmbTemas.SelectedItem = GetSetting("tema").ToString().Trim();
-            txtRutaLogo.Text = GetSetting("rutaLogo").ToString().Trim();
+            //txtNombreAplicacion.Text = GetSetting("nombreAplicacion").ToString().Trim();
+            //cmbTemas.SelectedItem = GetSetting("tema").ToString().Trim();
+            //txtRutaLogo.Text = GetSetting("rutaLogo").ToString().Trim();
+
+            
+            //obtener datos desde SQLite
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+
+            query = "select valor from ConfClaveValor where clave = 'nombreAplicacion'";
+            DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+            string nombreAplicacion = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'rutaLogo'";
+            DataTable odtConf2 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string rutaLogo = odtConf2.Rows.Count > 0 ? odtConf2.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'tema'";
+            DataTable odtConf3 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string tema = odtConf3.Rows.Count > 0 ? odtConf3.Rows[0]["valor"].ToString().Trim() : "";
+
+            txtNombreAplicacion.Text = nombreAplicacion;
+            cmbTemas.SelectedItem = tema;
+            txtRutaLogo.Text = rutaLogo;
 
         }
         #endregion
@@ -312,9 +358,20 @@ namespace Digitalizador
 
         private void btnGuardarApariencia_Click(object sender, EventArgs e)
         {
-            SetSetting("nombreAplicacion", txtNombreAplicacion.Text.ToString().Trim());
-            SetSetting("rutaLogo", txtRutaLogo.Text.ToString().Trim());
-            SetSetting("tema", cmbTemas.SelectedItem.ToString().Trim());
+            //SetSetting("nombreAplicacion", txtNombreAplicacion.Text.ToString().Trim());
+            //SetSetting("rutaLogo", txtRutaLogo.Text.ToString().Trim());
+            //SetSetting("tema", cmbTemas.SelectedItem.ToString().Trim());
+
+            string tema = cmbTemas.Text == "" ? "" : cmbTemas.SelectedItem.ToString().Trim();
+
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+            query = "update ConfClaveValor set valor = '" + txtNombreAplicacion.Text.ToString().Trim() + "' where clave = 'nombreAplicacion'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+            query = "update ConfClaveValor set valor = '" + txtRutaLogo.Text.ToString().Trim() + "' where clave = 'rutaLogo'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+            query = "update ConfClaveValor set valor = '" + tema + "' where clave = 'tema'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
 
         }
 
@@ -375,7 +432,7 @@ namespace Digitalizador
             
         }
 
-       
+
     }
 
     public class USBDeviceInfo

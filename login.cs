@@ -28,30 +28,51 @@ namespace Digitalizador
         #region eventos de controles del formulario
         private void login_Load(object sender, EventArgs e)
         {
-            txtUsuario.Text = "ericardo.munoz@iepcjalisco.org.mx";
-            txtContrasena.Text = "cantinflas20";
+            txtUsuario.Text = "digitalizador@iepcjalisco.org.mx";
+            txtContrasena.Text = "123456";
 
             txtUsuario.GotFocus += new EventHandler(this.TextGotFocus);
             txtUsuario.LostFocus += new EventHandler(this.TextLostFocus);
             txtContrasena.GotFocus += new EventHandler(this.TextGotFocusContrasena);
             txtContrasena.LostFocus += new EventHandler(this.TextLostFocusContrasena);
 
-            lblTitulo.Text = GetSetting("nombreAplicacion") != "" ? GetSetting("nombreAplicacion").ToString().Trim() : lblTitulo.Text;
+
+            //obtener datos desde SQLite
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+
+            query = "select valor from ConfClaveValor where clave = 'nombreAplicacion'";
+            DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+            string nombreAplicacion = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'rutaLogo'";
+            DataTable odtConf2 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string rutaLogo = odtConf2.Rows.Count > 0 ? odtConf2.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'tema'";
+            DataTable odtConf3 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string tema = odtConf3.Rows.Count > 0 ? odtConf3.Rows[0]["valor"].ToString().Trim() : "";
+
+            //--------------------------------------------------------------
+
+            lblTitulo.Text = nombreAplicacion; //GetSetting("nombreAplicacion") != "" ? GetSetting("nombreAplicacion").ToString().Trim() : lblTitulo.Text;
             string ruta = System.Environment.CurrentDirectory.ToString().Trim();
             string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
             //path = path.Replace(@"\bin\Debug", @"\images\logos.png");
+            path = path.Replace(@"\bin\Debug", @"\images\refresh_icon.png");
             string imageLogo = path;
-            pictureBox1.ImageLocation = GetSetting("rutaLogo").ToString().Trim() != "" ? GetSetting("rutaLogo").ToString().Trim() : imageLogo;
+            pictureBox1.ImageLocation = rutaLogo != "" ? rutaLogo : imageLogo; //GetSetting("rutaLogo").ToString().Trim() != "" ? GetSetting("rutaLogo").ToString().Trim() : imageLogo;
 
             string a = path;
-            switch (GetSetting("tema").ToString().Trim())
+            //switch (GetSetting("tema").ToString().Trim())
+            switch (tema)
             {
                 case "SIGE":
                     panel1.BackColor = ColorTranslator.FromHtml("#8031A7");
                     linkLabel1.BackColor = ColorTranslator.FromHtml("#8031A7");
                     linkLabel3.BackColor = ColorTranslator.FromHtml("#8031A7");
 
-                    a = a.Replace(@"\bin\Debug", @"\images\imgIngresar_sige.png");
+                    a = a.Replace(@"\images\refresh_icon.png", @"\images\imgIngresar_sige.png");
                     bntIngresar.ImageLocation = a;
                     bntIngresar.Refresh();
 
@@ -61,7 +82,7 @@ namespace Digitalizador
                     linkLabel1.BackColor = ColorTranslator.FromHtml("#0096D6");
                     linkLabel3.BackColor = ColorTranslator.FromHtml("#0096D6");
 
-                    a = a.Replace(@"\bin\Debug", @"\images\imgIngresar_blue.png");
+                    a = a.Replace(@"\images\refresh_icon.png", @"\images\imgIngresar_blue.png");
                     bntIngresar.ImageLocation = a;
                     bntIngresar.Refresh();
 
@@ -71,7 +92,7 @@ namespace Digitalizador
                     linkLabel1.BackColor = ColorTranslator.FromHtml("#5A5A5A");
                     linkLabel3.BackColor = ColorTranslator.FromHtml("#5A5A5A");
 
-                    a = a.Replace(@"\bin\Debug", @"\images\imgIngresar_dark.png");
+                    a = a.Replace(@"\images\refresh_icon.png", @"\images\imgIngresar_dark.png");
                     bntIngresar.ImageLocation = a;
                     bntIngresar.Refresh();
 
@@ -83,7 +104,7 @@ namespace Digitalizador
         {
             string query = "";
 
-            string entornoSeleccionado = cmbEntornos.SelectedItem.ToString().Trim();
+            string entornoSeleccionado = cmbEntornos.SelectedItem.ToString().Trim().ToLower();
 
             //// actualizar valor del key entorno
             //SetSetting("entorno", entornoSeleccionado);

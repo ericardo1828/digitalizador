@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Digitalizador.exe" size="198624">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Digitalizador.exe" size="199136">
       <assemblyIdentity name="Digitalizador" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>m3OKmgJus4AErP4+6f5HXsyKFzK8o2y2Uh3ad7zD+wk=</dsig:DigestValue>
+        <dsig:DigestValue>IY4UHhOnw6F2bJIDpR5JAWg9Fd2NGxlmSEpJWGQlJK8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -443,7 +443,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>gw/wMiTnIfawZPzLTfidHHThnJpoqjay8DKhhhfptRw=</dsig:DigestValue>
+      <dsig:DigestValue>NnDBrWWL3dGOkJQXorlnUGOtAy7QPr7XYJAoVy0RVlY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="dll\BarcodeLib.BarcodeReader.dll" size="402944">
