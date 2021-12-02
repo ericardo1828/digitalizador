@@ -56,7 +56,7 @@ namespace Digitalizador
 
             lblVersion.Text = "digi 1.1";
             lblEntorno.Text = entorno;  //objAppConfigValue_entorno;
-            lblTitulo.Text = GetSetting("nombreAplicacion") != "" ? GetSetting("nombreAplicacion").ToString().Trim() : lblTitulo.Text;
+            lblTitulo.Text = nombreAplicacion; //GetSetting("nombreAplicacion") != "" ? GetSetting("nombreAplicacion").ToString().Trim() : lblTitulo.Text;
 
             //string ruta = System.Environment.CurrentDirectory.ToString().Trim();
             //string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);

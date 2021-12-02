@@ -95,7 +95,7 @@ namespace Digitalizador
             // 
             this.lblVersion.AutoSize = true;
             this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(1071, 10);
+            this.lblVersion.Location = new System.Drawing.Point(1029, 10);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(0, 13);
             this.lblVersion.TabIndex = 1;
@@ -104,7 +104,7 @@ namespace Digitalizador
             // 
             this.lblEntorno.AutoSize = true;
             this.lblEntorno.ForeColor = System.Drawing.Color.White;
-            this.lblEntorno.Location = new System.Drawing.Point(959, 10);
+            this.lblEntorno.Location = new System.Drawing.Point(928, 10);
             this.lblEntorno.Name = "lblEntorno";
             this.lblEntorno.Size = new System.Drawing.Size(0, 13);
             this.lblEntorno.TabIndex = 1;
