@@ -283,3 +283,9 @@ C:\Users\ericardo\Documents\Proyectos\digitalizador\obj\Debug\Digitalizador.appl
 C:\Users\ericardo\Documents\Proyectos\digitalizador\obj\Debug\Digitalizador.csproj.CopyComplete
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.MonitoreoFilesDirectorio.resources
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.crud_pdf.resources
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Magick.NET.Core.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Magick.NET.Core.xml
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Ghostscript.NET.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\Ghostscript.NET.xml
