@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,6 +13,11 @@ using BarcodeLib.BarcodeReader;
 using ImageMagick;
 using System.Collections;
 using Ghostscript.NET;
+
+using Syncfusion.Pdf.Parsing;
+using Syncfusion.Windows.Forms.PdfViewer;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Digitalizador
 {
@@ -48,6 +52,52 @@ namespace Digitalizador
 
             LoadImage("",1);
 
+            //convert_pdf_to_jpg(@"C:\pdfsqr\qrs_pdf_1.pdf", @"C:\pdfsqr\jpg\");
+
+        }
+
+        public void convert_pdf_to_jpg(string filepath, string outputFolder)
+        {
+            //string InputPDFFile = @"C:\pdfsqr\qrs_pdf_1.pdf";
+            //string OutPdfFolder = @"C:\pdfsqr\jpg\";
+
+            //Initialize the PdfViewer Control
+            PdfViewerControl pdfViewer = new PdfViewerControl();
+
+            //Load the input PDF file
+            //PdfLoadedDocument loadedDocument = new PdfLoadedDocument("../../Data/Barcode.pdf");
+            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(filepath);
+
+            pdfViewer.Load(loadedDocument);
+
+            //Export the particular PDF page as image at the page index of 0
+            Bitmap image = pdfViewer.ExportAsImage(0);
+
+            // Save the image.
+            image.Save(outputFolder + @"Sample3.png", ImageFormat.Png);
+        }
+
+        public void convert()
+        {
+            //// Create a PDF converter instance by loading a local file 
+            //PdfImageConverter pdfConverter = new PdfImageConverter("sample.pdf");
+
+            //// Set the dpi, the output image will be rendered in such resolution
+            //pdfConverter.DPI = 96;
+
+            //// the output image will be rendered to grayscale image or not
+            //pdfConverter.GrayscaleOutput = false;
+
+            //for (int i = 0; i < pdfConverter.PageCount; i++)
+            //{
+            //    // Convert each pdf page to jpeg image with original page size
+            //    //Image pageImage = pdfConverter.PageToImage(i);
+            //    // Convert pdf to jpg in customized image size
+            //    Image pageImage = pdfConverter.PageToImage(i, 500, 800);
+
+            //    // Save converted image to jpeg format
+            //    pageImage.Save("Page " + i + ".jpg", ImageFormat.Jpeg);
+            //}
         }
 
         //public string ReadPdfFile(object Filename)
@@ -156,6 +206,7 @@ namespace Digitalizador
         //        }
         //    }
         //}
+
 
         public void LoadImage(string InputPDFFile, int PageNumber)
         {
