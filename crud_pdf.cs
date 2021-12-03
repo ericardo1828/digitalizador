@@ -47,11 +47,16 @@ namespace Digitalizador
 
             //ConvertPdfPageToPng(@"C:\pdfsqr\qrs_pdf_1.pdf", 1, @"C:\pdfsqr\png\");
 
-            ReadPdfFile(@"C:\pdfsqr\IEPC-SIRC-00235_23.pdf", @"C:\pdfsqr\png\");
 
+            //chido
+            //ReadPdfFile(@"C:\pdfsqr\IEPC-SIRC-00235_23.pdf", @"C:\pdfsqr\png\");
 
+           
+        }
 
-
+        private void btnLeerImagen_Click(object sender, EventArgs e)
+        {
+            ReadImagenFile(@"C:\actas\Captura1.png");
         }
 
         public void convert_pdf_to_jpg(string filepath, string outputFolder)
@@ -116,7 +121,7 @@ namespace Digitalizador
         //    return strText;
         //}
 
-        public string ReadPdfFile(string fileName, string outputFolder)
+        public void ReadPdfFile(string fileName, string outputFolder)
         {
             string cadenaObtenida = "";
             StringBuilder text = new StringBuilder();
@@ -149,7 +154,26 @@ namespace Digitalizador
                 pdfReader.Close();
 
             }
-            return text.ToString();
+            //return text.ToString();
+        }
+
+        public void ReadImagenFile(string fileName)
+        {
+            //string cadenaObtenida = "";
+            //StringBuilder text = new StringBuilder();
+            //if (File.Exists(fileName))
+            //{
+            //    string[] arr;
+            //    arr = ReadBarCode(fileName);
+            //    for (int x = 0; x < arr.Length; x++)
+            //    {
+            //        cadenaObtenida = cadenaObtenida + arr[x].ToString().Trim();
+            //    }
+            //    textBox1.Text = cadenaObtenida;
+            //}
+
+            ubicarCodigoBarras(fileName);
+
         }
 
         void SplitePDF(string filepath)
@@ -365,6 +389,76 @@ namespace Digitalizador
             }
         }
 
+        public void ubicarCodigoBarras(string filepath)
+        {
+            // Crear bitmap la imagen seleccionada
+            Bitmap source = new Bitmap(filepath);
+            string cadenaObtenida = "";
+
+            for (int x = 1; x <= 5; x++)
+            {
+                if (cadenaObtenida == "")
+                {
+                    for (int y = 1; y <= 16; y++)
+                    {
+                        if (cadenaObtenida == "")
+                        {
+                            //int a = 00, b = 55;
+                            //int a = 150, b = 150;
+                            int a = 30, b = 20;
+                            a = a * x;
+                            b = b * y;
+
+                            // Crear seccion a recortar
+                            //Rectangle section = new Rectangle(new Point(a, b), new Size(650, 200));
+                            //Rectangle section = new Rectangle(new Point(a, b), new Size(2000, 500));
+                            Rectangle section = new Rectangle(new Point(a, b), new Size(300, 100));
+
+                            // Recortar seccion de la imagen
+                            Bitmap CroppedImage = CropImage(source, section);
+
+                            //// Guardar la Imagen de QR
+                            //CroppedImage.Save(@"C:\Users\programador\Downloads\barras\barra_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
+                            string tempFolder = Environment.CurrentDirectory.Replace(@"\bin\Debug",@"\temp\");
+                            string imgFile = tempFolder + a.ToString().Trim() + "_" + b.ToString().Trim() + ".png";
+                            CroppedImage.Save(imgFile);
+
+                            // Lee la imagen actual para ver si puede leer un codigo qr
+                            string[] arr;
+                            //arr = ReadBarCode(@"C:\Users\programador\Downloads\barras\barra_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
+                            arr = ReadBarCode(imgFile);
+
+                            for (int z = 0; z < arr.Length; z++)
+                            {
+                                cadenaObtenida = cadenaObtenida + arr[z].ToString().Trim();
+                            }
+                            if (arr != null && arr.Length != 0)
+                            {
+                                textBox1.Text += cadenaObtenida;
+
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private string[] ReadBarCode(string imgFile)
+        {
+            var reader = new BarcodeReader();
+            string filename = imgFile;
+
+            string[] results = BarcodeReader.read(filename, BarcodeReader.CODE39);
+            if (results != null)
+            {
+                return results;
+            }
+            else
+            {
+                return new string[0];
+            }
+        }
         public static Bitmap resizeImage(Image imgToResize, Size size)
         {
             return (Bitmap)(new Bitmap(imgToResize, size));
@@ -379,5 +473,7 @@ namespace Digitalizador
                 return bitmap;
             }
         }
+
+       
     }
 }

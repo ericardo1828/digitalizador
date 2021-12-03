@@ -386,6 +386,7 @@
   <ItemGroup>
     <Folder Include="dbs_sqlite\" />
     <Folder Include="Files\" />
+    <Folder Include="temp\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
