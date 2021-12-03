@@ -45,14 +45,12 @@ namespace Digitalizador
             //string path2 = @"c:\pdfsqr\qrs_pdf.pdf";
             //SplitePDF(path2);
 
+            //ConvertPdfPageToPng(@"C:\pdfsqr\qrs_pdf_1.pdf", 1, @"C:\pdfsqr\png\");
 
-            //convertPagePdfToImage();
+            ReadPdfFile(@"C:\pdfsqr\IEPC-SIRC-00235_23.pdf", @"C:\pdfsqr\png\");
 
-            //ConvertPDFTOneImage();
 
-            LoadImage("",1);
 
-            //convert_pdf_to_jpg(@"C:\pdfsqr\qrs_pdf_1.pdf", @"C:\pdfsqr\jpg\");
 
         }
 
@@ -118,8 +116,9 @@ namespace Digitalizador
         //    return strText;
         //}
 
-        public string ReadPdfFile(string fileName)
+        public string ReadPdfFile(string fileName, string outputFolder)
         {
+            string cadenaObtenida = "";
             StringBuilder text = new StringBuilder();
             if (File.Exists(fileName))
             {
@@ -134,17 +133,20 @@ namespace Digitalizador
                     text.Append(currentText);
 
                     //crear una imagen jpg por cada hoja
-
-
+                    string pageInPng = ConvertPdfPageToPng(fileName, page, outputFolder);
 
                     //Escanear codigos qr en la hoja actual
-                    cadenaQR = ReadQRCode(fileName);
-
-
+                    string[] arr;
+                    arr = ReadQRCode(pageInPng);
+                    
+                    for (int x = 0; x < arr.Length; x++)
+                    {
+                        cadenaObtenida = cadenaObtenida + arr[x].ToString().Trim();
+                    }
+                    textBox1.Text = cadenaObtenida;
 
                 }
                 pdfReader.Close();
-
 
             }
             return text.ToString();
@@ -208,20 +210,18 @@ namespace Digitalizador
         //}
 
 
-        public void LoadImage(string InputPDFFile, int PageNumber)
+        public string ConvertPdfPageToPng(string InputPDFFile, int PageNumber, string OutputFolder)
         {
-            InputPDFFile = @"C:\pdfsqr\qrs_pdf_1.pdf";
-            string outPdfFolder = @"C:\pdfsqr\";
-            PageNumber = 1;
+            //InputPDFFile = @"C:\pdfsqr\qrs_pdf_1.pdf";
+            //string outPdfFolder = @"C:\pdfsqr\";
+            //PageNumber = 1;
 
             string appPath = Application.StartupPath;
             string dbPath = @"\";
             string fullpath = System.IO.Path.Combine(appPath, dbPath);
 
-
             string outImageName = System.IO.Path.GetFileNameWithoutExtension(InputPDFFile);
-            outImageName = outImageName + "_" + PageNumber.ToString() + "_.png";
-
+            outImageName = outImageName + "_" + PageNumber.ToString() + ".png";
 
             GhostscriptPngDevice dev = new GhostscriptPngDevice(GhostscriptPngDeviceType.Png256);
             dev.GraphicsAlphaBits = GhostscriptImageDeviceAlphaBits.V_4;
@@ -231,8 +231,10 @@ namespace Digitalizador
             dev.Pdf.FirstPage = PageNumber;
             dev.Pdf.LastPage = PageNumber;
             dev.CustomSwitches.Add("-dDOINTERPOLATE");
-            dev.OutputPath = outPdfFolder + outImageName;
+            dev.OutputPath = OutputFolder + outImageName;
             dev.Process();
+
+            return dev.OutputPath.ToString().Trim();
 
         }
 
@@ -316,5 +318,66 @@ namespace Digitalizador
             }
         }
 
+        public void ubicarCodigoQR()
+        {
+            // Crear bitmap la imagen seleccionada
+            Bitmap source = new Bitmap(@"C:\Users\programador\Downloads\codigos\scan_qr.jpg");
+            string cadenaObtenida = "";
+
+            for (int x = 1; x <= 5; x++)
+            {
+                if (cadenaObtenida == "")
+                {
+                    for (int y = 1; y <= 8; y++)
+                    {
+                        if (cadenaObtenida == "")
+                        {
+                            int a = 50, b = 33;
+                            a = a * x;
+                            b = b * y;
+
+                            // Crear seccion a recortar
+                            Rectangle section = new Rectangle(new Point(a, b), new Size(120, 120));
+
+                            // Recortar seccion de la imagen
+                            Bitmap CroppedImage = CropImage(source, section);
+
+                            //// Guardar la Imagen de QR
+                            CroppedImage.Save(@"C:\Users\programador\Downloads\codigos\qrs\qr_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
+
+                            // Lee la imagen actual para ver si puede leer un codigo qr
+                            string[] arr;
+                            arr = ReadQRCode(@"C:\Users\programador\Downloads\codigos\qrs\qr_" + a.ToString().Trim() + "_" + b.ToString().Trim() + ".jpg");
+
+                            for (int z = 0; z < arr.Length; z++)
+                            {
+                                cadenaObtenida = cadenaObtenida + arr[z].ToString().Trim();
+                            }
+                            if (arr != null && arr.Length != 0)
+                            {
+                                textBox1.Text += cadenaObtenida;
+
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static Bitmap resizeImage(Image imgToResize, Size size)
+        {
+            return (Bitmap)(new Bitmap(imgToResize, size));
+        }
+
+        public Bitmap CropImage(Bitmap source, Rectangle section)
+        {
+            var bitmap = new Bitmap(section.Width, section.Height);
+            using (var g = Graphics.FromImage(bitmap))
+            {
+                g.DrawImage(source, 0, 0, section, GraphicsUnit.Pixel);
+                return bitmap;
+            }
+        }
     }
 }

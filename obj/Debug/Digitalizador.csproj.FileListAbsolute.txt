@@ -189,3 +189,4 @@ C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.a
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.csproj.CopyComplete
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.exe
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.pdb
+C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.csprojFakesResolveAssemblyReference.cache
