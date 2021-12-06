@@ -245,6 +245,7 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginInfo.cs" />
     <Compile Include="MonitoreoFilesDirectorio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,7 +304,6 @@
       <DependentUpon>RecortarImagenes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="dbs\database.db" />
-    <None Include="database.db" />
     <Fakes Include="Fakes\System.Data.SQLite.fakes" />
     <None Include="Digitalizador_TemporaryKey.pfx" />
     <None Include="dll\net461\OpenCvSharp.dll.config" />

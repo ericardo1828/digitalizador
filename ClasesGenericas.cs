@@ -10,6 +10,8 @@ namespace Digitalizador
 {
     public static class ClaseGenerica
     {
+        
+
         public static DataTable ToDataTable<T>(this IList<T> data)
         {
             PropertyDescriptorCollection props =

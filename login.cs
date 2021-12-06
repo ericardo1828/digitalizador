@@ -263,6 +263,9 @@ namespace Digitalizador
 
                 if (bndAcceso > 0)
                 {
+                    LoginInfo.Email = txtUsuario.Text.ToString().Trim();
+                    LoginInfo.Pass = txtContrasena.Text.ToString().Trim();
+
                     this.Hide();
                     frmPrincipal frm = new frmPrincipal();
                     frm.Show();

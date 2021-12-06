@@ -1,4 +1,5 @@
 ﻿using Digitalizador.Persistence;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,29 @@ namespace Digitalizador
             this.DoubleBuffered = true;
 
             objAppConfigValue_entorno = GetSetting("entorno");
+        }
+
+        public void cargarMenu()
+        {
+            DataTable odt = new DataTable();
+            rest res = new rest();
+            convert conv = new convert();
+
+            /////////////////////////////////////////////////////
+            string e, p = "";
+            e = LoginInfo.Email.ToString().Trim() == "" ? "" : LoginInfo.Email.ToString().Trim();
+            p = LoginInfo.Pass.ToString().Trim() == "" ? "" : LoginInfo.Pass.ToString().Trim();
+
+            var lo = new clogin
+            {
+                email = e,
+                password = p
+            };
+
+            string json = JsonConvert.SerializeObject(lo);
+            string stringToken = rest.PostItem(json);
+
+
         }
 
         #region eventos de controles de formulario
@@ -91,9 +115,10 @@ namespace Digitalizador
                     break;
 
             }
-           
 
-            
+            cargarMenu();
+
+
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
