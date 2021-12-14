@@ -17,7 +17,6 @@ namespace Digitalizador.Persistence
         //private const string SQLScript = @"..\..\dbs\database.sql";
         //private static bool IsDbRecentlyCreated = false;
 
-
         public static SQLiteConnection GetInstance()
         {
             var db = new SQLiteConnection(
@@ -25,7 +24,6 @@ namespace Digitalizador.Persistence
             );
 
             db.Open();
-
             return db;
         }
 

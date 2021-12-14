@@ -35,7 +35,6 @@ namespace Digitalizador
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblHardware = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.picRefresh = new System.Windows.Forms.PictureBox();
             this.btnSelectDir = new System.Windows.Forms.Button();
             this.cmbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.btnAgregarDir = new System.Windows.Forms.Button();
@@ -85,9 +84,19 @@ namespace Digitalizador
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.picRefresh = new System.Windows.Forms.PictureBox();
+            this.tabTimers = new System.Windows.Forms.TabPage();
+            this.chkMonitoreoRC = new System.Windows.Forms.CheckBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblRC_pageTimers = new System.Windows.Forms.Label();
+            this.chkEnvioRC = new System.Windows.Forms.CheckBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.chkEnvioActasPrep = new System.Windows.Forms.CheckBox();
+            this.lblActasPrep = new System.Windows.Forms.Label();
+            this.chkMonitoreoActas = new System.Windows.Forms.CheckBox();
+            this.btnGuardarTabTimers = new System.Windows.Forms.Button();
             this.panelHardware.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRutasDir)).BeginInit();
             this.tabConfiguraciones.SuspendLayout();
             this.tabPageHardware.SuspendLayout();
@@ -98,6 +107,10 @@ namespace Digitalizador
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).BeginInit();
+            this.tabTimers.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblscaner
@@ -163,17 +176,6 @@ namespace Digitalizador
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1039, 574);
             this.panel1.TabIndex = 5;
-            // 
-            // picRefresh
-            // 
-            this.picRefresh.Image = global::Digitalizador.Properties.Resources.refresh_icon;
-            this.picRefresh.Location = new System.Drawing.Point(598, 137);
-            this.picRefresh.Name = "picRefresh";
-            this.picRefresh.Size = new System.Drawing.Size(24, 24);
-            this.picRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRefresh.TabIndex = 10;
-            this.picRefresh.TabStop = false;
-            this.picRefresh.Click += new System.EventHandler(this.picRefresh_Click);
             // 
             // btnSelectDir
             // 
@@ -252,6 +254,7 @@ namespace Digitalizador
             this.tabConfiguraciones.Controls.Add(this.tabPageDirectorios);
             this.tabConfiguraciones.Controls.Add(this.tabPageApariencia);
             this.tabConfiguraciones.Controls.Add(this.tabPageConfigXY);
+            this.tabConfiguraciones.Controls.Add(this.tabTimers);
             this.tabConfiguraciones.Location = new System.Drawing.Point(12, 12);
             this.tabConfiguraciones.Name = "tabConfiguraciones";
             this.tabConfiguraciones.SelectedIndex = 0;
@@ -263,7 +266,7 @@ namespace Digitalizador
             this.tabPageHardware.Controls.Add(this.panelHardware);
             this.tabPageHardware.Location = new System.Drawing.Point(4, 22);
             this.tabPageHardware.Name = "tabPageHardware";
-            this.tabPageHardware.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageHardware.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageHardware.Size = new System.Drawing.Size(1049, 580);
             this.tabPageHardware.TabIndex = 0;
             this.tabPageHardware.Text = "Hardware";
@@ -274,7 +277,7 @@ namespace Digitalizador
             this.tabPageDirectorios.Controls.Add(this.panel1);
             this.tabPageDirectorios.Location = new System.Drawing.Point(4, 22);
             this.tabPageDirectorios.Name = "tabPageDirectorios";
-            this.tabPageDirectorios.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageDirectorios.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageDirectorios.Size = new System.Drawing.Size(1049, 580);
             this.tabPageDirectorios.TabIndex = 1;
             this.tabPageDirectorios.Text = "Directorios";
@@ -285,7 +288,7 @@ namespace Digitalizador
             this.tabPageApariencia.Controls.Add(this.panel2);
             this.tabPageApariencia.Location = new System.Drawing.Point(4, 22);
             this.tabPageApariencia.Name = "tabPageApariencia";
-            this.tabPageApariencia.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageApariencia.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageApariencia.Size = new System.Drawing.Size(1049, 580);
             this.tabPageApariencia.TabIndex = 2;
             this.tabPageApariencia.Text = "Apariencia";
@@ -373,9 +376,9 @@ namespace Digitalizador
             // 
             this.tabPageConfigXY.Controls.Add(this.panel3);
             this.tabPageConfigXY.Location = new System.Drawing.Point(4, 22);
-            this.tabPageConfigXY.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageConfigXY.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageConfigXY.Name = "tabPageConfigXY";
-            this.tabPageConfigXY.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageConfigXY.Padding = new System.Windows.Forms.Padding(2);
             this.tabPageConfigXY.Size = new System.Drawing.Size(1049, 580);
             this.tabPageConfigXY.TabIndex = 3;
             this.tabPageConfigXY.Text = "Config XY";
@@ -414,7 +417,7 @@ namespace Digitalizador
             this.panel4.Controls.Add(this.txt_Codigo_Ancho);
             this.panel4.Controls.Add(this.label12);
             this.panel4.Location = new System.Drawing.Point(10, 11);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1016, 546);
             this.panel4.TabIndex = 8;
@@ -439,7 +442,7 @@ namespace Digitalizador
             // 
             this.chkAgregarFecha.AutoSize = true;
             this.chkAgregarFecha.Location = new System.Drawing.Point(113, 184);
-            this.chkAgregarFecha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkAgregarFecha.Margin = new System.Windows.Forms.Padding(2);
             this.chkAgregarFecha.Name = "chkAgregarFecha";
             this.chkAgregarFecha.Size = new System.Drawing.Size(133, 17);
             this.chkAgregarFecha.TabIndex = 22;
@@ -460,7 +463,7 @@ namespace Digitalizador
             // btnPropiedadesFont
             // 
             this.btnPropiedadesFont.Location = new System.Drawing.Point(366, 24);
-            this.btnPropiedadesFont.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPropiedadesFont.Margin = new System.Windows.Forms.Padding(2);
             this.btnPropiedadesFont.Name = "btnPropiedadesFont";
             this.btnPropiedadesFont.Size = new System.Drawing.Size(78, 23);
             this.btnPropiedadesFont.TabIndex = 3;
@@ -471,7 +474,7 @@ namespace Digitalizador
             // txtMensaje
             // 
             this.txtMensaje.Location = new System.Drawing.Point(113, 52);
-            this.txtMensaje.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMensaje.Margin = new System.Windows.Forms.Padding(2);
             this.txtMensaje.Multiline = true;
             this.txtMensaje.Name = "txtMensaje";
             this.txtMensaje.Size = new System.Drawing.Size(332, 119);
@@ -481,7 +484,7 @@ namespace Digitalizador
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(545, 163);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -520,7 +523,7 @@ namespace Digitalizador
             "BARRAS",
             "QR"});
             this.cmbTipoCodigo.Location = new System.Drawing.Point(666, 74);
-            this.cmbTipoCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTipoCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTipoCodigo.Name = "cmbTipoCodigo";
             this.cmbTipoCodigo.Size = new System.Drawing.Size(332, 21);
             this.cmbTipoCodigo.TabIndex = 18;
@@ -558,7 +561,7 @@ namespace Digitalizador
             "DOCs GENERALES",
             "ACTAS"});
             this.cmbTipoDoc.Location = new System.Drawing.Point(666, 50);
-            this.cmbTipoDoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTipoDoc.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTipoDoc.Name = "cmbTipoDoc";
             this.cmbTipoDoc.Size = new System.Drawing.Size(332, 21);
             this.cmbTipoDoc.TabIndex = 16;
@@ -628,6 +631,124 @@ namespace Digitalizador
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // picRefresh
+            // 
+            this.picRefresh.Image = global::Digitalizador.Properties.Resources.refresh_icon;
+            this.picRefresh.Location = new System.Drawing.Point(598, 137);
+            this.picRefresh.Name = "picRefresh";
+            this.picRefresh.Size = new System.Drawing.Size(24, 24);
+            this.picRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRefresh.TabIndex = 10;
+            this.picRefresh.TabStop = false;
+            this.picRefresh.Click += new System.EventHandler(this.picRefresh_Click);
+            // 
+            // tabTimers
+            // 
+            this.tabTimers.Controls.Add(this.btnGuardarTabTimers);
+            this.tabTimers.Controls.Add(this.panel6);
+            this.tabTimers.Controls.Add(this.panel5);
+            this.tabTimers.Location = new System.Drawing.Point(4, 22);
+            this.tabTimers.Name = "tabTimers";
+            this.tabTimers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTimers.Size = new System.Drawing.Size(1049, 580);
+            this.tabTimers.TabIndex = 4;
+            this.tabTimers.Text = "Timers";
+            this.tabTimers.UseVisualStyleBackColor = true;
+            // 
+            // chkMonitoreoRC
+            // 
+            this.chkMonitoreoRC.AutoSize = true;
+            this.chkMonitoreoRC.Location = new System.Drawing.Point(16, 52);
+            this.chkMonitoreoRC.Name = "chkMonitoreoRC";
+            this.chkMonitoreoRC.Size = new System.Drawing.Size(114, 17);
+            this.chkMonitoreoRC.TabIndex = 0;
+            this.chkMonitoreoRC.Text = "Habilitar Monitoreo";
+            this.chkMonitoreoRC.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.chkEnvioRC);
+            this.panel5.Controls.Add(this.lblRC_pageTimers);
+            this.panel5.Controls.Add(this.chkMonitoreoRC);
+            this.panel5.Location = new System.Drawing.Point(19, 22);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(339, 93);
+            this.panel5.TabIndex = 1;
+            // 
+            // lblRC_pageTimers
+            // 
+            this.lblRC_pageTimers.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblRC_pageTimers.AutoSize = true;
+            this.lblRC_pageTimers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRC_pageTimers.Location = new System.Drawing.Point(90, 13);
+            this.lblRC_pageTimers.Name = "lblRC_pageTimers";
+            this.lblRC_pageTimers.Size = new System.Drawing.Size(173, 20);
+            this.lblRC_pageTimers.TabIndex = 1;
+            this.lblRC_pageTimers.Text = "Registro Candidatos";
+            // 
+            // chkEnvioRC
+            // 
+            this.chkEnvioRC.AutoSize = true;
+            this.chkEnvioRC.Location = new System.Drawing.Point(165, 52);
+            this.chkEnvioRC.Name = "chkEnvioRC";
+            this.chkEnvioRC.Size = new System.Drawing.Size(150, 17);
+            this.chkEnvioRC.TabIndex = 2;
+            this.chkEnvioRC.Text = "Habilitar Envio Automatico";
+            this.chkEnvioRC.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.chkEnvioActasPrep);
+            this.panel6.Controls.Add(this.lblActasPrep);
+            this.panel6.Controls.Add(this.chkMonitoreoActas);
+            this.panel6.Location = new System.Drawing.Point(19, 140);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(339, 91);
+            this.panel6.TabIndex = 3;
+            // 
+            // chkEnvioActasPrep
+            // 
+            this.chkEnvioActasPrep.AutoSize = true;
+            this.chkEnvioActasPrep.Location = new System.Drawing.Point(165, 50);
+            this.chkEnvioActasPrep.Name = "chkEnvioActasPrep";
+            this.chkEnvioActasPrep.Size = new System.Drawing.Size(150, 17);
+            this.chkEnvioActasPrep.TabIndex = 2;
+            this.chkEnvioActasPrep.Text = "Habilitar Envio Automatico";
+            this.chkEnvioActasPrep.UseVisualStyleBackColor = true;
+            // 
+            // lblActasPrep
+            // 
+            this.lblActasPrep.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblActasPrep.AutoSize = true;
+            this.lblActasPrep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActasPrep.Location = new System.Drawing.Point(90, 13);
+            this.lblActasPrep.Name = "lblActasPrep";
+            this.lblActasPrep.Size = new System.Drawing.Size(97, 20);
+            this.lblActasPrep.TabIndex = 1;
+            this.lblActasPrep.Text = "Actas Prep";
+            // 
+            // chkMonitoreoActas
+            // 
+            this.chkMonitoreoActas.AutoSize = true;
+            this.chkMonitoreoActas.Location = new System.Drawing.Point(16, 50);
+            this.chkMonitoreoActas.Name = "chkMonitoreoActas";
+            this.chkMonitoreoActas.Size = new System.Drawing.Size(114, 17);
+            this.chkMonitoreoActas.TabIndex = 0;
+            this.chkMonitoreoActas.Text = "Habilitar Monitoreo";
+            this.chkMonitoreoActas.UseVisualStyleBackColor = true;
+            // 
+            // btnGuardarTabTimers
+            // 
+            this.btnGuardarTabTimers.Location = new System.Drawing.Point(915, 525);
+            this.btnGuardarTabTimers.Name = "btnGuardarTabTimers";
+            this.btnGuardarTabTimers.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardarTabTimers.TabIndex = 4;
+            this.btnGuardarTabTimers.Text = "Guardar";
+            this.btnGuardarTabTimers.UseVisualStyleBackColor = true;
+            this.btnGuardarTabTimers.Click += new System.EventHandler(this.btnGuardarTabTimers_Click);
+            // 
             // frmConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -642,7 +763,6 @@ namespace Digitalizador
             this.panelHardware.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRutasDir)).EndInit();
             this.tabConfiguraciones.ResumeLayout(false);
             this.tabPageHardware.ResumeLayout(false);
@@ -655,6 +775,12 @@ namespace Digitalizador
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).EndInit();
+            this.tabTimers.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -717,5 +843,15 @@ namespace Digitalizador
         private System.Windows.Forms.CheckBox chkAgregarFecha;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabPage tabTimers;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.CheckBox chkEnvioRC;
+        private System.Windows.Forms.Label lblRC_pageTimers;
+        private System.Windows.Forms.CheckBox chkMonitoreoRC;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.CheckBox chkEnvioActasPrep;
+        private System.Windows.Forms.Label lblActasPrep;
+        private System.Windows.Forms.CheckBox chkMonitoreoActas;
+        private System.Windows.Forms.Button btnGuardarTabTimers;
     }
 }

@@ -432,7 +432,10 @@ namespace Digitalizador
             
         }
 
+        private void btnGuardarTabTimers_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 
     public class USBDeviceInfo

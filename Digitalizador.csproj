@@ -27,7 +27,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -201,6 +201,12 @@
     <Compile Include="crud_pdf.Designer.cs">
       <DependentUpon>crud_pdf.cs</DependentUpon>
     </Compile>
+    <Compile Include="dragAndDrop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dragAndDrop.Designer.cs">
+      <DependentUpon>dragAndDrop.cs</DependentUpon>
+    </Compile>
     <Compile Include="entities.cs" />
     <Compile Include="Entity\RutasArchivosDigitalizador.cs" />
     <Compile Include="ConsumirServicios.cs">
@@ -208,6 +214,12 @@
     </Compile>
     <Compile Include="ConsumirServicios.Designer.cs">
       <DependentUpon>ConsumirServicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmActas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmActas.Designer.cs">
+      <DependentUpon>frmActas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConfiguracion.cs">
       <SubType>Form</SubType>
@@ -226,6 +238,12 @@
     </Compile>
     <Compile Include="frmRegCand.Designer.cs">
       <DependentUpon>frmRegCand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistroCandidatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistroCandidatos.Designer.cs">
+      <DependentUpon>frmRegistroCandidatos.cs</DependentUpon>
     </Compile>
     <Compile Include="Hilos.cs">
       <SubType>Form</SubType>
@@ -269,6 +287,12 @@
     <EmbeddedResource Include="crud_pdf.resx">
       <DependentUpon>crud_pdf.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dragAndDrop.resx">
+      <DependentUpon>dragAndDrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmActas.resx">
+      <DependentUpon>frmActas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguracion.resx">
       <DependentUpon>frmConfiguracion.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegCand.resx">
       <DependentUpon>frmRegCand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistroCandidatos.resx">
+      <DependentUpon>frmRegistroCandidatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hilos.resx">
       <DependentUpon>Hilos.cs</DependentUpon>
@@ -371,7 +398,9 @@
     <Content Include="dll\net461\OpenCvSharp.WpfExtensions.dll" />
     <Content Include="dll\net461\OpenCvSharp.WpfExtensions.pdb" />
     <Content Include="dll\README.txt" />
-    <Content Include="dll\sqlite\sqlite.interop.dll" />
+    <Content Include="dll\sqlite\sqlite.interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="dll\sqlite\System.Data.SQLite.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

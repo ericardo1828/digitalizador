@@ -190,3 +190,8 @@ C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.c
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.exe
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.pdb
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.csprojFakesResolveAssemblyReference.cache
+C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.dragAndDrop.resources
+C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.csproj.AssemblyReference.cache
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\dll\sqlite\sqlite.interop.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.frmActas.resources
+C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.frmRegistroCandidatos.resources

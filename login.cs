@@ -13,6 +13,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+//using System.Windows;
 using System.Windows.Forms;
 
 
@@ -268,6 +269,16 @@ namespace Digitalizador
 
                     this.Hide();
                     frmPrincipal frm = new frmPrincipal();
+                    
+                    double height = System.Windows.SystemParameters.FullPrimaryScreenHeight;
+                    double width = System.Windows.SystemParameters.FullPrimaryScreenWidth;
+                    double resolution = height * width;
+
+                    // Size the form to be 300 pixels in height and width.
+                    frm.Size = new Size((int)width, (int)height);
+                    // Display the form in the center of the screen.
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+
                     frm.Show();
                 }
                 else

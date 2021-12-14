@@ -10,6 +10,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace Digitalizador
@@ -28,7 +29,16 @@ namespace Digitalizador
             this.DoubleBuffered = true;
 
             objAppConfigValue_entorno = GetSetting("entorno");
+
+            
         }
+
+        //public void DimensionInicial()
+        //{
+        //    double height = SystemParameters.FullPrimaryScreenHeight;
+        //    double width = SystemParameters.FullPrimaryScreenWidth;
+        //    double resolution = height * width;     
+        //}
 
         public void cargarMenu()
         {
@@ -51,11 +61,15 @@ namespace Digitalizador
             string stringToken = rest.PostItem(json);
 
 
+
+
         }
 
         #region eventos de controles de formulario
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            btnMaximizar.Hide();
+
             //obtener datos desde SQLite
             DBContext dbsqlite = new DBContext();
             string query = "";
@@ -116,13 +130,13 @@ namespace Digitalizador
 
             }
 
-            cargarMenu();
+            //cargarMenu();
 
 
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
@@ -144,10 +158,12 @@ namespace Digitalizador
         }
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
+
+
             btnMaximizar.Visible = true;
             btnRestaurar.Visible = false;
-            this.Size = new Size(sw, sh);
-            this.Location = new Point(lx, ly);
+            this.Size = new System.Drawing.Size(sw, sh);
+            this.Location = new System.Drawing.Point(lx, ly);
         }
         private void btnPanelDeControl_Click(object sender, EventArgs e)
         {
@@ -155,11 +171,11 @@ namespace Digitalizador
         }
         private void btnRC_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<frmRegCand>();
+            AbrirFormulario<frmRegistroCandidatos>();
         }
         private void btnActas_Click(object sender, EventArgs e)
         {
-
+            AbrirFormulario<frmActas>();
         }
         // bool vai = false;
         private void panelTitulo_MouseDown(object sender, MouseEventArgs e)
@@ -220,7 +236,7 @@ namespace Digitalizador
             {
                 case WM_NCHITTEST:
                     base.WndProc(ref m);
-                    var hitPoint = this.PointToClient(new Point(m.LParam.ToInt32() & 0xffff, m.LParam.ToInt32() >> 16));
+                    var hitPoint = this.PointToClient(new System.Drawing.Point(m.LParam.ToInt32() & 0xffff, m.LParam.ToInt32() >> 16));
                     if (sizeGripRectangle.Contains(hitPoint))
                         m.Result = new IntPtr(HTBOTTOMRIGHT);
                     break;

@@ -39,22 +39,22 @@ namespace Digitalizador
             this.btnActas = new System.Windows.Forms.Button();
             this.btnRC = new System.Windows.Forms.Button();
             this.panelTitulo = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.btnRestaurar = new System.Windows.Forms.PictureBox();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.picLogo = new System.Windows.Forms.PictureBox();
             this.panelContenedor.SuspendLayout();
             this.panelFormularios.SuspendLayout();
             this.panelFooter.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenedor
@@ -67,7 +67,7 @@ namespace Digitalizador
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(2);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1296, 740);
+            this.panelContenedor.Size = new System.Drawing.Size(1200, 750);
             this.panelContenedor.TabIndex = 3;
             // 
             // panelFormularios
@@ -75,9 +75,9 @@ namespace Digitalizador
             this.panelFormularios.BackColor = System.Drawing.Color.White;
             this.panelFormularios.Controls.Add(this.panelFooter);
             this.panelFormularios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFormularios.Location = new System.Drawing.Point(206, 63);
+            this.panelFormularios.Location = new System.Drawing.Point(93, 63);
             this.panelFormularios.Name = "panelFormularios";
-            this.panelFormularios.Size = new System.Drawing.Size(1090, 677);
+            this.panelFormularios.Size = new System.Drawing.Size(1107, 687);
             this.panelFormularios.TabIndex = 3;
             // 
             // panelFooter
@@ -86,16 +86,17 @@ namespace Digitalizador
             this.panelFooter.Controls.Add(this.lblVersion);
             this.panelFooter.Controls.Add(this.lblEntorno);
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFooter.Location = new System.Drawing.Point(0, 654);
+            this.panelFooter.Location = new System.Drawing.Point(0, 664);
             this.panelFooter.Name = "panelFooter";
-            this.panelFooter.Size = new System.Drawing.Size(1090, 23);
+            this.panelFooter.Size = new System.Drawing.Size(1107, 23);
             this.panelFooter.TabIndex = 0;
             // 
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
+            this.lblVersion.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(1029, 10);
+            this.lblVersion.Location = new System.Drawing.Point(1107, 0);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(0, 13);
             this.lblVersion.TabIndex = 1;
@@ -103,8 +104,9 @@ namespace Digitalizador
             // lblEntorno
             // 
             this.lblEntorno.AutoSize = true;
+            this.lblEntorno.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblEntorno.ForeColor = System.Drawing.Color.White;
-            this.lblEntorno.Location = new System.Drawing.Point(928, 10);
+            this.lblEntorno.Location = new System.Drawing.Point(0, 0);
             this.lblEntorno.Name = "lblEntorno";
             this.lblEntorno.Size = new System.Drawing.Size(0, 13);
             this.lblEntorno.TabIndex = 1;
@@ -118,7 +120,7 @@ namespace Digitalizador
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 63);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(206, 677);
+            this.panelMenu.Size = new System.Drawing.Size(93, 687);
             this.panelMenu.TabIndex = 2;
             // 
             // btnPanelDeControl
@@ -129,10 +131,10 @@ namespace Digitalizador
             this.btnPanelDeControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPanelDeControl.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPanelDeControl.ForeColor = System.Drawing.Color.White;
-            this.btnPanelDeControl.Location = new System.Drawing.Point(12, 3);
+            this.btnPanelDeControl.Location = new System.Drawing.Point(3, 3);
             this.btnPanelDeControl.Margin = new System.Windows.Forms.Padding(0);
             this.btnPanelDeControl.Name = "btnPanelDeControl";
-            this.btnPanelDeControl.Size = new System.Drawing.Size(147, 45);
+            this.btnPanelDeControl.Size = new System.Drawing.Size(85, 45);
             this.btnPanelDeControl.TabIndex = 2;
             this.btnPanelDeControl.Text = "Panel de Control";
             this.btnPanelDeControl.UseVisualStyleBackColor = false;
@@ -148,7 +150,7 @@ namespace Digitalizador
             this.btnActas.ForeColor = System.Drawing.Color.White;
             this.btnActas.Location = new System.Drawing.Point(12, 102);
             this.btnActas.Name = "btnActas";
-            this.btnActas.Size = new System.Drawing.Size(147, 45);
+            this.btnActas.Size = new System.Drawing.Size(64, 45);
             this.btnActas.TabIndex = 1;
             this.btnActas.Text = "Actas";
             this.btnActas.UseVisualStyleBackColor = false;
@@ -162,9 +164,9 @@ namespace Digitalizador
             this.btnRC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRC.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRC.ForeColor = System.Drawing.Color.White;
-            this.btnRC.Location = new System.Drawing.Point(12, 51);
+            this.btnRC.Location = new System.Drawing.Point(3, 51);
             this.btnRC.Name = "btnRC";
-            this.btnRC.Size = new System.Drawing.Size(147, 45);
+            this.btnRC.Size = new System.Drawing.Size(88, 45);
             this.btnRC.TabIndex = 0;
             this.btnRC.Text = "Registro Candidatos";
             this.btnRC.UseVisualStyleBackColor = false;
@@ -174,72 +176,45 @@ namespace Digitalizador
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(49)))), ((int)(((byte)(167)))));
             this.panelTitulo.Controls.Add(this.btnRestaurar);
+            this.panelTitulo.Controls.Add(this.picLogo);
             this.panelTitulo.Controls.Add(this.btnMaximizar);
             this.panelTitulo.Controls.Add(this.btnMinimizar);
             this.panelTitulo.Controls.Add(this.btnCerrar);
             this.panelTitulo.Controls.Add(this.lblTitulo);
-            this.panelTitulo.Controls.Add(this.picLogo);
             this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1296, 63);
+            this.panelTitulo.Size = new System.Drawing.Size(1200, 63);
             this.panelTitulo.TabIndex = 1;
             this.panelTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitulo_MouseDown);
             this.panelTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTitulo_MouseMove);
             this.panelTitulo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTitulo_MouseUp);
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Century Gothic", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(569, 9);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(220, 40);
+            this.lblTitulo.TabIndex = 6;
+            this.lblTitulo.Text = "Digitalizador";
+            // 
             // btnRestaurar
             // 
+            this.btnRestaurar.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnRestaurar.Image = global::Digitalizador.Properties.Resources.restaurar;
-            this.btnRestaurar.Location = new System.Drawing.Point(1224, 12);
+            this.btnRestaurar.Location = new System.Drawing.Point(1084, 0);
+            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(29, 30);
-            this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnRestaurar.Size = new System.Drawing.Size(29, 63);
             this.btnRestaurar.TabIndex = 9;
             this.btnRestaurar.TabStop = false;
             this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Image = global::Digitalizador.Properties.Resources.maximizar;
-            this.btnMaximizar.Location = new System.Drawing.Point(1224, 12);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(29, 30);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnMaximizar.TabIndex = 8;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Image = global::Digitalizador.Properties.Resources._;
-            this.btnMinimizar.Location = new System.Drawing.Point(1189, 12);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(29, 30);
-            this.btnMinimizar.TabIndex = 7;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Image = global::Digitalizador.Properties.Resources.X;
-            this.btnCerrar.Location = new System.Drawing.Point(1259, 12);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(29, 30);
-            this.btnCerrar.TabIndex = 1;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(685, 18);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(132, 24);
-            this.lblTitulo.TabIndex = 6;
-            this.lblTitulo.Text = "Digitalizador";
             // 
             // picLogo
             // 
@@ -251,15 +226,49 @@ namespace Digitalizador
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
             // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMaximizar.Image = global::Digitalizador.Properties.Resources.maximizar;
+            this.btnMaximizar.Location = new System.Drawing.Point(1113, 0);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(29, 63);
+            this.btnMaximizar.TabIndex = 8;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMinimizar.Image = global::Digitalizador.Properties.Resources._;
+            this.btnMinimizar.Location = new System.Drawing.Point(1142, 0);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(29, 63);
+            this.btnMinimizar.TabIndex = 7;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCerrar.Image = global::Digitalizador.Properties.Resources.X;
+            this.btnCerrar.Location = new System.Drawing.Point(1171, 0);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(29, 63);
+            this.btnCerrar.TabIndex = 1;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1296, 740);
+            this.ClientSize = new System.Drawing.Size(1200, 750);
             this.Controls.Add(this.panelContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(650, 400);
+            this.MinimumSize = new System.Drawing.Size(1200, 750);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -272,10 +281,10 @@ namespace Digitalizador
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
