@@ -47,4 +47,12 @@ namespace Digitalizador
         public string fkRole { get; set; }
 
     }
+
+    public class cArchivoRC
+    {
+        public string folio { get; set; }
+        public string candidato { get; set; }
+        public string doc_title { get; set; }
+        public string doc_id { get; set; }
+    }
 }

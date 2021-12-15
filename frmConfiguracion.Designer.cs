@@ -35,6 +35,7 @@ namespace Digitalizador
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblHardware = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.picRefresh = new System.Windows.Forms.PictureBox();
             this.btnSelectDir = new System.Windows.Forms.Button();
             this.cmbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.btnAgregarDir = new System.Windows.Forms.Button();
@@ -80,23 +81,37 @@ namespace Digitalizador
             this.txtCodigo_XY_Inicio = new System.Windows.Forms.TextBox();
             this.txt_Codigo_Ancho = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.picRefresh = new System.Windows.Forms.PictureBox();
-            this.tabTimers = new System.Windows.Forms.TabPage();
-            this.chkMonitoreoRC = new System.Windows.Forms.CheckBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lblRC_pageTimers = new System.Windows.Forms.Label();
-            this.chkEnvioRC = new System.Windows.Forms.CheckBox();
+            this.tabPageTimers = new System.Windows.Forms.TabPage();
+            this.btnGuardarTabTimers = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.chkEnvioActasPrep = new System.Windows.Forms.CheckBox();
             this.lblActasPrep = new System.Windows.Forms.Label();
             this.chkMonitoreoActas = new System.Windows.Forms.CheckBox();
-            this.btnGuardarTabTimers = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.chkEnvioRC = new System.Windows.Forms.CheckBox();
+            this.lblRC_pageTimers = new System.Windows.Forms.Label();
+            this.chkMonitoreoRC = new System.Windows.Forms.CheckBox();
+            this.tabPageServicios = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtServicioPruebasRC = new System.Windows.Forms.TextBox();
+            this.txtServicioProdRC = new System.Windows.Forms.TextBox();
+            this.btnGuardarTabServicios = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.txtServicioProdActasPrep = new System.Windows.Forms.TextBox();
+            this.txtServicioPruebasActasPrep = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.panelHardware.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRutasDir)).BeginInit();
             this.tabConfiguraciones.SuspendLayout();
             this.tabPageHardware.SuspendLayout();
@@ -107,10 +122,12 @@ namespace Digitalizador
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).BeginInit();
-            this.tabTimers.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.tabPageTimers.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.tabPageServicios.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblscaner
@@ -127,7 +144,7 @@ namespace Digitalizador
             this.lstEscaner.FormattingEnabled = true;
             this.lstEscaner.Location = new System.Drawing.Point(107, 53);
             this.lstEscaner.Name = "lstEscaner";
-            this.lstEscaner.Size = new System.Drawing.Size(285, 82);
+            this.lstEscaner.Size = new System.Drawing.Size(285, 134);
             this.lstEscaner.TabIndex = 1;
             // 
             // panelHardware
@@ -138,17 +155,18 @@ namespace Digitalizador
             this.panelHardware.Controls.Add(this.lblHardware);
             this.panelHardware.Location = new System.Drawing.Point(6, 6);
             this.panelHardware.Name = "panelHardware";
-            this.panelHardware.Size = new System.Drawing.Size(1037, 541);
+            this.panelHardware.Size = new System.Drawing.Size(1037, 568);
             this.panelHardware.TabIndex = 3;
             // 
             // btnGuardar
             // 
+            this.btnGuardar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnGuardar.Location = new System.Drawing.Point(901, 504);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(118, 23);
             this.btnGuardar.TabIndex = 3;
             this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblHardware
@@ -177,6 +195,17 @@ namespace Digitalizador
             this.panel1.Size = new System.Drawing.Size(1039, 574);
             this.panel1.TabIndex = 5;
             // 
+            // picRefresh
+            // 
+            this.picRefresh.Image = global::Digitalizador.Properties.Resources.refresh_icon;
+            this.picRefresh.Location = new System.Drawing.Point(598, 137);
+            this.picRefresh.Name = "picRefresh";
+            this.picRefresh.Size = new System.Drawing.Size(24, 24);
+            this.picRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRefresh.TabIndex = 10;
+            this.picRefresh.TabStop = false;
+            this.picRefresh.Click += new System.EventHandler(this.picRefresh_Click);
+            // 
             // btnSelectDir
             // 
             this.btnSelectDir.Location = new System.Drawing.Point(24, 83);
@@ -197,12 +226,13 @@ namespace Digitalizador
             // 
             // btnAgregarDir
             // 
+            this.btnAgregarDir.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAgregarDir.Location = new System.Drawing.Point(17, 127);
             this.btnAgregarDir.Name = "btnAgregarDir";
             this.btnAgregarDir.Size = new System.Drawing.Size(75, 23);
             this.btnAgregarDir.TabIndex = 8;
             this.btnAgregarDir.Text = "Agregar";
-            this.btnAgregarDir.UseVisualStyleBackColor = true;
+            this.btnAgregarDir.UseVisualStyleBackColor = false;
             this.btnAgregarDir.Click += new System.EventHandler(this.btnAgregarDir_Click);
             // 
             // txtRuta
@@ -226,7 +256,7 @@ namespace Digitalizador
             this.gridRutasDir.Location = new System.Drawing.Point(17, 165);
             this.gridRutasDir.Name = "gridRutasDir";
             this.gridRutasDir.RowHeadersWidth = 51;
-            this.gridRutasDir.Size = new System.Drawing.Size(605, 230);
+            this.gridRutasDir.Size = new System.Drawing.Size(605, 388);
             this.gridRutasDir.TabIndex = 5;
             // 
             // lblTipoDoc
@@ -254,7 +284,8 @@ namespace Digitalizador
             this.tabConfiguraciones.Controls.Add(this.tabPageDirectorios);
             this.tabConfiguraciones.Controls.Add(this.tabPageApariencia);
             this.tabConfiguraciones.Controls.Add(this.tabPageConfigXY);
-            this.tabConfiguraciones.Controls.Add(this.tabTimers);
+            this.tabConfiguraciones.Controls.Add(this.tabPageTimers);
+            this.tabConfiguraciones.Controls.Add(this.tabPageServicios);
             this.tabConfiguraciones.Location = new System.Drawing.Point(12, 12);
             this.tabConfiguraciones.Name = "tabConfiguraciones";
             this.tabConfiguraciones.SelectedIndex = 0;
@@ -305,7 +336,7 @@ namespace Digitalizador
             this.panel2.Controls.Add(this.txtRutaLogo);
             this.panel2.Location = new System.Drawing.Point(6, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1037, 541);
+            this.panel2.Size = new System.Drawing.Size(1037, 568);
             this.panel2.TabIndex = 6;
             // 
             // cmbTemas
@@ -340,12 +371,13 @@ namespace Digitalizador
             // 
             // btnGuardarApariencia
             // 
+            this.btnGuardarApariencia.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnGuardarApariencia.Location = new System.Drawing.Point(914, 501);
             this.btnGuardarApariencia.Name = "btnGuardarApariencia";
             this.btnGuardarApariencia.Size = new System.Drawing.Size(108, 23);
             this.btnGuardarApariencia.TabIndex = 5;
             this.btnGuardarApariencia.Text = "Guardar";
-            this.btnGuardarApariencia.UseVisualStyleBackColor = true;
+            this.btnGuardarApariencia.UseVisualStyleBackColor = false;
             this.btnGuardarApariencia.Click += new System.EventHandler(this.btnGuardarApariencia_Click);
             // 
             // btnLogo
@@ -452,12 +484,13 @@ namespace Digitalizador
             // 
             // btnGuardarConfigXY
             // 
+            this.btnGuardarConfigXY.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnGuardarConfigXY.Location = new System.Drawing.Point(889, 513);
             this.btnGuardarConfigXY.Name = "btnGuardarConfigXY";
             this.btnGuardarConfigXY.Size = new System.Drawing.Size(108, 23);
             this.btnGuardarConfigXY.TabIndex = 5;
             this.btnGuardarConfigXY.Text = "Guardar";
-            this.btnGuardarConfigXY.UseVisualStyleBackColor = true;
+            this.btnGuardarConfigXY.UseVisualStyleBackColor = false;
             this.btnGuardarConfigXY.Click += new System.EventHandler(this.btnGuardarConfigXY_Click);
             // 
             // btnPropiedadesFont
@@ -627,75 +660,29 @@ namespace Digitalizador
             this.label12.TabIndex = 11;
             this.label12.Text = "Coordenada X,Y Inicio";
             // 
-            // openFileDialog1
+            // tabPageTimers
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.tabPageTimers.Controls.Add(this.btnGuardarTabTimers);
+            this.tabPageTimers.Controls.Add(this.panel6);
+            this.tabPageTimers.Controls.Add(this.panel5);
+            this.tabPageTimers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTimers.Name = "tabPageTimers";
+            this.tabPageTimers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTimers.Size = new System.Drawing.Size(1049, 580);
+            this.tabPageTimers.TabIndex = 4;
+            this.tabPageTimers.Text = "Timers";
+            this.tabPageTimers.UseVisualStyleBackColor = true;
             // 
-            // picRefresh
+            // btnGuardarTabTimers
             // 
-            this.picRefresh.Image = global::Digitalizador.Properties.Resources.refresh_icon;
-            this.picRefresh.Location = new System.Drawing.Point(598, 137);
-            this.picRefresh.Name = "picRefresh";
-            this.picRefresh.Size = new System.Drawing.Size(24, 24);
-            this.picRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRefresh.TabIndex = 10;
-            this.picRefresh.TabStop = false;
-            this.picRefresh.Click += new System.EventHandler(this.picRefresh_Click);
-            // 
-            // tabTimers
-            // 
-            this.tabTimers.Controls.Add(this.btnGuardarTabTimers);
-            this.tabTimers.Controls.Add(this.panel6);
-            this.tabTimers.Controls.Add(this.panel5);
-            this.tabTimers.Location = new System.Drawing.Point(4, 22);
-            this.tabTimers.Name = "tabTimers";
-            this.tabTimers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTimers.Size = new System.Drawing.Size(1049, 580);
-            this.tabTimers.TabIndex = 4;
-            this.tabTimers.Text = "Timers";
-            this.tabTimers.UseVisualStyleBackColor = true;
-            // 
-            // chkMonitoreoRC
-            // 
-            this.chkMonitoreoRC.AutoSize = true;
-            this.chkMonitoreoRC.Location = new System.Drawing.Point(16, 52);
-            this.chkMonitoreoRC.Name = "chkMonitoreoRC";
-            this.chkMonitoreoRC.Size = new System.Drawing.Size(114, 17);
-            this.chkMonitoreoRC.TabIndex = 0;
-            this.chkMonitoreoRC.Text = "Habilitar Monitoreo";
-            this.chkMonitoreoRC.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.chkEnvioRC);
-            this.panel5.Controls.Add(this.lblRC_pageTimers);
-            this.panel5.Controls.Add(this.chkMonitoreoRC);
-            this.panel5.Location = new System.Drawing.Point(19, 22);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(339, 93);
-            this.panel5.TabIndex = 1;
-            // 
-            // lblRC_pageTimers
-            // 
-            this.lblRC_pageTimers.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblRC_pageTimers.AutoSize = true;
-            this.lblRC_pageTimers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRC_pageTimers.Location = new System.Drawing.Point(90, 13);
-            this.lblRC_pageTimers.Name = "lblRC_pageTimers";
-            this.lblRC_pageTimers.Size = new System.Drawing.Size(173, 20);
-            this.lblRC_pageTimers.TabIndex = 1;
-            this.lblRC_pageTimers.Text = "Registro Candidatos";
-            // 
-            // chkEnvioRC
-            // 
-            this.chkEnvioRC.AutoSize = true;
-            this.chkEnvioRC.Location = new System.Drawing.Point(165, 52);
-            this.chkEnvioRC.Name = "chkEnvioRC";
-            this.chkEnvioRC.Size = new System.Drawing.Size(150, 17);
-            this.chkEnvioRC.TabIndex = 2;
-            this.chkEnvioRC.Text = "Habilitar Envio Automatico";
-            this.chkEnvioRC.UseVisualStyleBackColor = true;
+            this.btnGuardarTabTimers.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnGuardarTabTimers.Location = new System.Drawing.Point(892, 525);
+            this.btnGuardarTabTimers.Name = "btnGuardarTabTimers";
+            this.btnGuardarTabTimers.Size = new System.Drawing.Size(98, 23);
+            this.btnGuardarTabTimers.TabIndex = 4;
+            this.btnGuardarTabTimers.Text = "Guardar";
+            this.btnGuardarTabTimers.UseVisualStyleBackColor = false;
+            this.btnGuardarTabTimers.Click += new System.EventHandler(this.btnGuardarTabTimers_Click);
             // 
             // panel6
             // 
@@ -739,15 +726,187 @@ namespace Digitalizador
             this.chkMonitoreoActas.Text = "Habilitar Monitoreo";
             this.chkMonitoreoActas.UseVisualStyleBackColor = true;
             // 
-            // btnGuardarTabTimers
+            // panel5
             // 
-            this.btnGuardarTabTimers.Location = new System.Drawing.Point(915, 525);
-            this.btnGuardarTabTimers.Name = "btnGuardarTabTimers";
-            this.btnGuardarTabTimers.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardarTabTimers.TabIndex = 4;
-            this.btnGuardarTabTimers.Text = "Guardar";
-            this.btnGuardarTabTimers.UseVisualStyleBackColor = true;
-            this.btnGuardarTabTimers.Click += new System.EventHandler(this.btnGuardarTabTimers_Click);
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.chkEnvioRC);
+            this.panel5.Controls.Add(this.lblRC_pageTimers);
+            this.panel5.Controls.Add(this.chkMonitoreoRC);
+            this.panel5.Location = new System.Drawing.Point(19, 22);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(339, 93);
+            this.panel5.TabIndex = 1;
+            // 
+            // chkEnvioRC
+            // 
+            this.chkEnvioRC.AutoSize = true;
+            this.chkEnvioRC.Location = new System.Drawing.Point(165, 52);
+            this.chkEnvioRC.Name = "chkEnvioRC";
+            this.chkEnvioRC.Size = new System.Drawing.Size(150, 17);
+            this.chkEnvioRC.TabIndex = 2;
+            this.chkEnvioRC.Text = "Habilitar Envio Automatico";
+            this.chkEnvioRC.UseVisualStyleBackColor = true;
+            // 
+            // lblRC_pageTimers
+            // 
+            this.lblRC_pageTimers.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblRC_pageTimers.AutoSize = true;
+            this.lblRC_pageTimers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRC_pageTimers.Location = new System.Drawing.Point(90, 13);
+            this.lblRC_pageTimers.Name = "lblRC_pageTimers";
+            this.lblRC_pageTimers.Size = new System.Drawing.Size(173, 20);
+            this.lblRC_pageTimers.TabIndex = 1;
+            this.lblRC_pageTimers.Text = "Registro Candidatos";
+            // 
+            // chkMonitoreoRC
+            // 
+            this.chkMonitoreoRC.AutoSize = true;
+            this.chkMonitoreoRC.Location = new System.Drawing.Point(16, 52);
+            this.chkMonitoreoRC.Name = "chkMonitoreoRC";
+            this.chkMonitoreoRC.Size = new System.Drawing.Size(114, 17);
+            this.chkMonitoreoRC.TabIndex = 0;
+            this.chkMonitoreoRC.Text = "Habilitar Monitoreo";
+            this.chkMonitoreoRC.UseVisualStyleBackColor = true;
+            // 
+            // tabPageServicios
+            // 
+            this.tabPageServicios.Controls.Add(this.panel8);
+            this.tabPageServicios.Controls.Add(this.btnGuardarTabServicios);
+            this.tabPageServicios.Controls.Add(this.panel7);
+            this.tabPageServicios.Location = new System.Drawing.Point(4, 22);
+            this.tabPageServicios.Name = "tabPageServicios";
+            this.tabPageServicios.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageServicios.Size = new System.Drawing.Size(1049, 580);
+            this.tabPageServicios.TabIndex = 5;
+            this.tabPageServicios.Text = "Servicios";
+            this.tabPageServicios.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.txtServicioProdRC);
+            this.panel7.Controls.Add(this.txtServicioPruebasRC);
+            this.panel7.Controls.Add(this.label17);
+            this.panel7.Controls.Add(this.label16);
+            this.panel7.Controls.Add(this.label15);
+            this.panel7.Location = new System.Drawing.Point(15, 19);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(484, 156);
+            this.panel7.TabIndex = 2;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(164, 13);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(173, 20);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Registro Candidatos";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 62);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(46, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Pruebas";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 100);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(61, 13);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Produccion";
+            // 
+            // txtServicioPruebasRC
+            // 
+            this.txtServicioPruebasRC.Location = new System.Drawing.Point(78, 55);
+            this.txtServicioPruebasRC.Name = "txtServicioPruebasRC";
+            this.txtServicioPruebasRC.Size = new System.Drawing.Size(355, 20);
+            this.txtServicioPruebasRC.TabIndex = 4;
+            // 
+            // txtServicioProdRC
+            // 
+            this.txtServicioProdRC.Location = new System.Drawing.Point(78, 93);
+            this.txtServicioProdRC.Name = "txtServicioProdRC";
+            this.txtServicioProdRC.Size = new System.Drawing.Size(355, 20);
+            this.txtServicioProdRC.TabIndex = 5;
+            // 
+            // btnGuardarTabServicios
+            // 
+            this.btnGuardarTabServicios.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnGuardarTabServicios.Location = new System.Drawing.Point(918, 524);
+            this.btnGuardarTabServicios.Name = "btnGuardarTabServicios";
+            this.btnGuardarTabServicios.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardarTabServicios.TabIndex = 5;
+            this.btnGuardarTabServicios.Text = "Guardar";
+            this.btnGuardarTabServicios.UseVisualStyleBackColor = false;
+            this.btnGuardarTabServicios.Click += new System.EventHandler(this.btnGuardarTabServicios_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.txtServicioProdActasPrep);
+            this.panel8.Controls.Add(this.txtServicioPruebasActasPrep);
+            this.panel8.Controls.Add(this.label18);
+            this.panel8.Controls.Add(this.label19);
+            this.panel8.Controls.Add(this.label20);
+            this.panel8.Location = new System.Drawing.Point(536, 19);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(482, 156);
+            this.panel8.TabIndex = 6;
+            // 
+            // txtServicioProdActasPrep
+            // 
+            this.txtServicioProdActasPrep.Location = new System.Drawing.Point(78, 93);
+            this.txtServicioProdActasPrep.Name = "txtServicioProdActasPrep";
+            this.txtServicioProdActasPrep.Size = new System.Drawing.Size(355, 20);
+            this.txtServicioProdActasPrep.TabIndex = 5;
+            // 
+            // txtServicioPruebasActasPrep
+            // 
+            this.txtServicioPruebasActasPrep.Location = new System.Drawing.Point(78, 55);
+            this.txtServicioPruebasActasPrep.Name = "txtServicioPruebasActasPrep";
+            this.txtServicioPruebasActasPrep.Size = new System.Drawing.Size(355, 20);
+            this.txtServicioPruebasActasPrep.TabIndex = 4;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 100);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(61, 13);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Produccion";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 62);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(46, 13);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "Pruebas";
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(203, 13);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(97, 20);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Actas Prep";
             // 
             // frmConfiguracion
             // 
@@ -763,6 +922,7 @@ namespace Digitalizador
             this.panelHardware.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRutasDir)).EndInit();
             this.tabConfiguraciones.ResumeLayout(false);
             this.tabPageHardware.ResumeLayout(false);
@@ -775,12 +935,16 @@ namespace Digitalizador
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).EndInit();
-            this.tabTimers.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.tabPageTimers.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.tabPageServicios.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -843,7 +1007,7 @@ namespace Digitalizador
         private System.Windows.Forms.CheckBox chkAgregarFecha;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TabPage tabTimers;
+        private System.Windows.Forms.TabPage tabPageTimers;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.CheckBox chkEnvioRC;
         private System.Windows.Forms.Label lblRC_pageTimers;
@@ -853,5 +1017,19 @@ namespace Digitalizador
         private System.Windows.Forms.Label lblActasPrep;
         private System.Windows.Forms.CheckBox chkMonitoreoActas;
         private System.Windows.Forms.Button btnGuardarTabTimers;
+        private System.Windows.Forms.TabPage tabPageServicios;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox txtServicioProdActasPrep;
+        private System.Windows.Forms.TextBox txtServicioPruebasActasPrep;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnGuardarTabServicios;
+        private System.Windows.Forms.TextBox txtServicioProdRC;
+        private System.Windows.Forms.TextBox txtServicioPruebasRC;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
     }
 }

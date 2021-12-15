@@ -36,16 +36,17 @@ namespace Digitalizador
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gridMonitoreoArchivos = new System.Windows.Forms.DataGridView();
             this.file = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblMonitoreados = new System.Windows.Forms.Label();
             this.lblVistaPrevia = new System.Windows.Forms.Label();
+            this.lblEnviados = new System.Windows.Forms.Label();
             this.gridEnvioArchivos = new System.Windows.Forms.DataGridView();
             this.btnEnviarArchivoManual = new System.Windows.Forms.Button();
             this.visorPDF = new AxAcroPDFLib.AxAcroPDF();
             this.chkMonitorearAuto = new System.Windows.Forms.CheckBox();
             this.chkEnviarAuto = new System.Windows.Forms.CheckBox();
-            this.lblMonitoreados = new System.Windows.Forms.Label();
-            this.lblEnviados = new System.Windows.Forms.Label();
             this.timerMonitoreoRC = new System.Windows.Forms.Timer(this.components);
             this.timerEnvioRC = new System.Windows.Forms.Timer(this.components);
+            this.timerChecaTimers = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMonitoreoArchivos)).BeginInit();
@@ -126,6 +127,17 @@ namespace Digitalizador
             this.file.Name = "file";
             this.file.ReadOnly = true;
             // 
+            // lblMonitoreados
+            // 
+            this.lblMonitoreados.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblMonitoreados.AutoSize = true;
+            this.lblMonitoreados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMonitoreados.Location = new System.Drawing.Point(94, 4);
+            this.lblMonitoreados.Name = "lblMonitoreados";
+            this.lblMonitoreados.Size = new System.Drawing.Size(106, 17);
+            this.lblMonitoreados.TabIndex = 2;
+            this.lblMonitoreados.Text = "Monitoreados";
+            // 
             // lblVistaPrevia
             // 
             this.lblVistaPrevia.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -136,6 +148,17 @@ namespace Digitalizador
             this.lblVistaPrevia.Size = new System.Drawing.Size(95, 17);
             this.lblVistaPrevia.TabIndex = 4;
             this.lblVistaPrevia.Text = "Vista Previa";
+            // 
+            // lblEnviados
+            // 
+            this.lblEnviados.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblEnviados.AutoSize = true;
+            this.lblEnviados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnviados.Location = new System.Drawing.Point(865, 4);
+            this.lblEnviados.Name = "lblEnviados";
+            this.lblEnviados.Size = new System.Drawing.Size(74, 17);
+            this.lblEnviados.TabIndex = 3;
+            this.lblEnviados.Text = "Enviados";
             // 
             // gridEnvioArchivos
             // 
@@ -194,28 +217,6 @@ namespace Digitalizador
             this.chkEnviarAuto.Text = "Enviar Automaticamente";
             this.chkEnviarAuto.UseVisualStyleBackColor = true;
             // 
-            // lblMonitoreados
-            // 
-            this.lblMonitoreados.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblMonitoreados.AutoSize = true;
-            this.lblMonitoreados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonitoreados.Location = new System.Drawing.Point(94, 4);
-            this.lblMonitoreados.Name = "lblMonitoreados";
-            this.lblMonitoreados.Size = new System.Drawing.Size(106, 17);
-            this.lblMonitoreados.TabIndex = 2;
-            this.lblMonitoreados.Text = "Monitoreados";
-            // 
-            // lblEnviados
-            // 
-            this.lblEnviados.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblEnviados.AutoSize = true;
-            this.lblEnviados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnviados.Location = new System.Drawing.Point(865, 4);
-            this.lblEnviados.Name = "lblEnviados";
-            this.lblEnviados.Size = new System.Drawing.Size(74, 17);
-            this.lblEnviados.TabIndex = 3;
-            this.lblEnviados.Text = "Enviados";
-            // 
             // timerMonitoreoRC
             // 
             this.timerMonitoreoRC.Interval = 5000;
@@ -223,8 +224,14 @@ namespace Digitalizador
             // 
             // timerEnvioRC
             // 
-            this.timerEnvioRC.Interval = 1500;
+            this.timerEnvioRC.Interval = 5000;
             this.timerEnvioRC.Tick += new System.EventHandler(this.timerEnvioRC_Tick);
+            // 
+            // timerChecaTimers
+            // 
+            this.timerChecaTimers.Enabled = true;
+            this.timerChecaTimers.Interval = 10000;
+            this.timerChecaTimers.Tick += new System.EventHandler(this.timerChecaTimers_Tick);
             // 
             // frmRegistroCandidatos
             // 
@@ -265,5 +272,6 @@ namespace Digitalizador
         private System.Windows.Forms.DataGridViewTextBoxColumn file;
         private System.Windows.Forms.CheckBox chkMonitorearAuto;
         private System.Windows.Forms.CheckBox chkEnviarAuto;
+        private System.Windows.Forms.Timer timerChecaTimers;
     }
 }

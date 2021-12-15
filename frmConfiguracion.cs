@@ -29,6 +29,8 @@ namespace Digitalizador
             LlenarComboTiposDocumentos();
             LlenarGridRutasGuardadas();
             LlenarDatosApariencia();
+            LlenarDatosTimers();
+            LlenarDatosServicios();
 
         }
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -244,6 +246,66 @@ namespace Digitalizador
             txtRutaLogo.Text = rutaLogo;
 
         }
+
+        public void LlenarDatosTimers()
+        {
+            //obtener datos desde SQLite
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+
+            query = "select valor from ConfClaveValor where clave = 'timerMonitoreoRC'";
+            DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+            bool timerMonitoreoRC_valor = odtConf.Rows.Count > 0 ? Extensions.ToBoolean( odtConf.Rows[0]["valor"].ToString().Trim()) : false;
+
+            query = "select valor from ConfClaveValor where clave = 'timerEnvioRC'";
+            DataTable odtConf2 = dbsqlite.dbContext_RetSqlDataTable(query);
+            bool timerEnvioRC_valor = odtConf2.Rows.Count > 0 ? Extensions.ToBoolean(odtConf2.Rows[0]["valor"].ToString().Trim()) : false;
+
+            query = "select valor from ConfClaveValor where clave = 'timerMonitoreoActas'";
+            DataTable odtConf3 = dbsqlite.dbContext_RetSqlDataTable(query);
+            bool timerMonitoreoActas_valor = odtConf3.Rows.Count > 0 ? Extensions.ToBoolean(odtConf3.Rows[0]["valor"].ToString().Trim()) : false;
+
+            query = "select valor from ConfClaveValor where clave = 'timerEnvioActas'";
+            DataTable odtConf4 = dbsqlite.dbContext_RetSqlDataTable(query);
+            bool timerEnvioActas_valor = odtConf4.Rows.Count > 0 ? Extensions.ToBoolean(odtConf4.Rows[0]["valor"].ToString().Trim()) : false;
+
+            chkMonitoreoRC.Checked = timerMonitoreoRC_valor;
+            chkEnvioRC.Checked = timerEnvioRC_valor;
+            chkMonitoreoActas.Checked = timerMonitoreoActas_valor;
+            chkEnvioActasPrep.Checked = timerEnvioActas_valor;
+
+        }
+
+        public void LlenarDatosServicios()
+        {
+            //obtener datos desde SQLite
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+
+            query = "select valor from ConfClaveValor where clave = 'serivicioPruebasRC'";
+            DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+            string serivicioPruebasRC_valor = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'servicioProdRC'";
+            DataTable odtConf2 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string servicioProdRC_valor = odtConf2.Rows.Count > 0 ? odtConf2.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'servicioPruebasActasPrep'";
+            DataTable odtConf3 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string servicioPruebasActasPrep_valor = odtConf3.Rows.Count > 0 ? odtConf3.Rows[0]["valor"].ToString().Trim() : "";
+
+            query = "select valor from ConfClaveValor where clave = 'servicioProdActasPrep'";
+            DataTable odtConf4 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string servicioProdActasPrep_valor = odtConf4.Rows.Count > 0 ? odtConf4.Rows[0]["valor"].ToString().Trim() : "";
+
+            txtServicioPruebasRC.Text = serivicioPruebasRC_valor;
+            txtServicioProdRC.Text = servicioProdRC_valor;
+            txtServicioPruebasActasPrep.Text = servicioPruebasActasPrep_valor;
+            txtServicioProdActasPrep.Text = servicioProdActasPrep_valor;
+
+        }
+
+
         #endregion
 
         #region METODOS DEL APP CONFIG
@@ -384,10 +446,7 @@ namespace Digitalizador
             LlenarGridRutasGuardadas();
         }
 
-        private void btnGuardarConfigXY_Click(object sender, EventArgs e)
-        {
-             
-        }
+       
 
         private void btnPropiedadesFont_Click(object sender, EventArgs e)
         {
@@ -432,8 +491,39 @@ namespace Digitalizador
             
         }
 
+        private void btnGuardarConfigXY_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnGuardarTabTimers_Click(object sender, EventArgs e)
         {
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+            query = "update ConfClaveValor set valor = '" + chkMonitoreoRC.Checked.ToString().Trim() + "' where clave = 'timerMonitoreoRC'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+            query = "update ConfClaveValor set valor = '" + chkEnvioRC.Checked.ToString().Trim() + "' where clave = 'timerEnvioRC'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+
+            query = "update ConfClaveValor set valor = '" + chkMonitoreoActas.Checked.ToString().Trim() + "' where clave = 'timerMonitoreoActas'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+            query = "update ConfClaveValor set valor = '" + chkEnvioActasPrep.Checked.ToString().Trim() + "' where clave = 'timerEnvioActas'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+        }
+
+        private void btnGuardarTabServicios_Click(object sender, EventArgs e)
+        {
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+            query = "update ConfClaveValor set valor = '" + txtServicioPruebasRC.Text.ToString().Trim() + "' where clave = 'serivicioPruebasRC'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+            query = "update ConfClaveValor set valor = '" + txtServicioProdRC.Text.ToString().Trim() + "' where clave = 'servicioProdRC'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+
+            query = "update ConfClaveValor set valor = '" + txtServicioPruebasActasPrep.Text.ToString().Trim() + "' where clave = 'servicioPruebasActasPrep'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
+            query = "update ConfClaveValor set valor = '" + txtServicioProdActasPrep.Text.ToString().Trim() + "' where clave = 'servicioProdActasPrep'";
+            dbsqlite.dbContext_RetSqlDataTable(query);
 
         }
     }
@@ -449,6 +539,24 @@ namespace Digitalizador
         public string DeviceID { get; private set; }
         public string PnpDeviceID { get; private set; }
         public string Description { get; private set; }
+    }
+
+    public static class Extensions
+    {
+        public static Boolean ToBoolean(this string str)
+        {
+            try
+            {
+                return Convert.ToBoolean(str);
+            }
+            catch { }
+            try
+            {
+                return Convert.ToBoolean(Convert.ToInt32(str));
+            }
+            catch { }
+            return false;
+        }
     }
 
 }

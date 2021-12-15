@@ -112,9 +112,10 @@ namespace Digitalizador
             }
         }
 
-        public static string PostItemFile64(string data)
+        public static string PostItemFile64(string data,string param_url)
         {
-            var url = $"https://imgsrv.iepcjalisco.org.mx/catd/imagenprep";
+            /*var url = $"https://imgsrv.iepcjalisco.org.mx/catd/imagenprep";*/
+            var url = param_url;
             var request = (HttpWebRequest)WebRequest.Create(url);
             //string json = $"{{\"data\":\"{data}\"}}";
             string json = data;
