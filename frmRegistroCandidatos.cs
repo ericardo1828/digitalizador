@@ -140,6 +140,24 @@ namespace Digitalizador
             return arrArchivos;
         }
 
+        public string[] ObtenerArchivosRCEnviados() //PENDIENTE
+        {
+            int cant = gridMonitoreoArchivos.SelectedCells.Count;
+            string[] arrArchivos = new string[cant];
+
+            //if (gridMonitoreoArchivos.SelectedCells.Count > 0)
+            //{
+            //    for (int x = 0; x < cant; x++)
+            //    {
+            //        int i = gridMonitoreoArchivos.SelectedCells[0].RowIndex;
+            //        string dirArchivo = gridMonitoreoArchivos.Rows[i].Cells[0].Value.ToString().Trim();
+
+            //        arrArchivos[x] = dirArchivo;
+            //    }
+            //}
+            //return arrArchivos;
+        }
+
         public string EnviarArchivosRC(string[] arrArchivos)
         {
             convert conv = new convert();
@@ -159,39 +177,44 @@ namespace Digitalizador
             {
                 //Leer codigo QR del archivo PDF
                 string currentDirectory = Environment.CurrentDirectory.ToString().Trim();
-                string contenidoQR = ReadPdfFile(file, currentDirectory);
-                contenidoQR = contenidoQR.Replace("6\"f", "{\"f");
-                contenidoQR = contenidoQR.Replace("7\"f", "{\"f");
+                string pathFolderTemp = currentDirectory.Replace(@"\bin\Debug", @"\temp\");
 
-                /////////////////////////////////////////////////
-                JObject SearchNode = JObject.Parse(contenidoQR);
+                string contenidoQR = ReadPdfFile(file, pathFolderTemp);
+                //contenidoQR = contenidoQR.Replace("6\"f", "{\"f");
+                //contenidoQR = contenidoQR.Replace("7\"f", "{\"f");
 
-                // Obtener la propiedades result en una lista 
-                IList<JToken> results = SearchNode.Children().ToList();
+                validaciones val = new validaciones();
+                if (validaciones.IsValidJson(contenidoQR))
+                {
+                    /////////////////////////////////////////////////
+                    JObject SearchNode = JObject.Parse(contenidoQR);
 
-                // Serializa resultados JSON a un objeto .NET
-                IList<cArchivoRC> searchResults = new List<cArchivoRC>();
+                    // Obtener la propiedades result en una lista 
+                    IList<JToken> results = SearchNode.Children().ToList();
 
-                string folio2 = results[0].First.ToString().Trim();
-                string candidato = results[1].First.ToString().Trim();
-                string doc_title = results[2].First.ToString().Trim();
-                string doc_id = results[3].First.ToString().Trim();
+                    // Serializa resultados JSON a un objeto .NET
+                    IList<cArchivoRC> searchResults = new List<cArchivoRC>();
 
-                //foreach (JToken result in results)
-                //{
-                //cArchivoRC searchResult = JsonConvert.DeserializeObject<cArchivoRC>(result.ToString());
-                //searchResults.Add(searchResult);
+                    string folio2 = results[0].First.ToString().Trim();
+                    string candidato = results[1].First.ToString().Trim();
+                    string doc_title = results[2].First.ToString().Trim();
+                    string doc_id = results[3].First.ToString().Trim();
+
+                    //foreach (JToken result in results)
+                    //{
+                    //cArchivoRC searchResult = JsonConvert.DeserializeObject<cArchivoRC>(result.ToString());
+                    //searchResults.Add(searchResult);
 
 
 
-                //string folio = result.First.ToString();
+                    //string folio = result.First.ToString();
 
-                //string candidato = searchResult.candidato.ToString().Trim();
-                //string doc_title = searchResult.doc_title.ToString().Trim();
-                //string doc_id = searchResult.doc_id.ToString().Trim();
+                    //string candidato = searchResult.candidato.ToString().Trim();
+                    //string doc_title = searchResult.doc_title.ToString().Trim();
+                    //string doc_id = searchResult.doc_id.ToString().Trim();
 
-                // enviar un archivo en base 64
-                var file64 = new cfileBase64
+                    // enviar un archivo en base 64
+                    var file64 = new cfileBase64
                     {
                         //filename = "codigoQR4.pdf",
                         //folder = "urnas",
@@ -204,7 +227,25 @@ namespace Digitalizador
                     string jsonFile = JsonConvert.SerializeObject(file64);
 
                     //bndEnvioCorrecto = rest.PostItemFile64(jsonFile, url);
-                //}
+
+                    bndEnvioCorrecto = ""; // TEMPORAL PARA EMULAR QUE YA ENVIO ALGO EL SERVICO IMAGENES
+
+                    if (bndEnvioCorrecto != "error")
+                    {
+                        string pathFolderEnviados = currentDirectory.Replace(@"\bin\Debug",@"\enviados\");
+
+                        //eliminar el archivo de enviados si ya existe.
+                        if (System.IO.File.Exists(pathFolderEnviados + folio2 + ".pdf"))
+                        { 
+                            System.IO.File.Delete(pathFolderEnviados + folio2 + ".pdf"); 
+                        }
+
+                        //mover el archivo de carpeta para que ya no lo envie de nuevo
+                        File.Move(file, pathFolderEnviados + folio2 + ".pdf");
+                    }
+
+                    //}
+                }
             }
 
 
@@ -221,7 +262,8 @@ namespace Digitalizador
                 string[] cadenaQR;
 
                 PdfReader pdfReader = new PdfReader(fileName);
-                for (int page = 1; page <= pdfReader.NumberOfPages; page++)
+                //for (int page = 1; page <= pdfReader.NumberOfPages; page++)
+                for (int page = 1; page <= 1; page++)
                 {
                     ITextExtractionStrategy strategy = new SimpleTextExtractionStrategy();
                     string currentText = PdfTextExtractor.GetTextFromPage(pdfReader, page, strategy);
@@ -289,6 +331,23 @@ namespace Digitalizador
         }
 
         public void LlenarGridMonitoreoArchivos()
+        {
+            odtFilesMonitoreados.Rows.Clear();
+
+            string[] files = Directory.GetFiles(@"C:\files\", "*.pdf");
+
+            foreach (string file in files)
+            {
+                odtFilesMonitoreados.Rows.Add(file);
+            }
+
+            //gridMonitoreoArchivos.AutoGenerateColumns = false;
+            gridMonitoreoArchivos.DataSource = odtFilesMonitoreados;
+            gridMonitoreoArchivos.Refresh();
+
+        }
+
+        public void LlenarGridEnvioArchivos() //PENDIENTE
         {
             odtFilesMonitoreados.Rows.Clear();
 

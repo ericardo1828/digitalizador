@@ -281,6 +281,7 @@
     </Compile>
     <Compile Include="rest.cs" />
     <Compile Include="Service\RutasArchivosDigitalizadorService.cs" />
+    <Compile Include="validaciones.cs" />
     <EmbeddedResource Include="ConsumirServicios.resx">
       <DependentUpon>ConsumirServicios.cs</DependentUpon>
     </EmbeddedResource>
