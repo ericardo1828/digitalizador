@@ -47,6 +47,7 @@ namespace Digitalizador
             this.timerMonitoreoRC = new System.Windows.Forms.Timer(this.components);
             this.timerEnvioRC = new System.Windows.Forms.Timer(this.components);
             this.timerChecaTimers = new System.Windows.Forms.Timer(this.components);
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMonitoreoArchivos)).BeginInit();
@@ -59,11 +60,11 @@ namespace Digitalizador
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1050, 35);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1050, 29);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -71,7 +72,7 @@ namespace Digitalizador
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(372, 5);
+            this.label1.Location = new System.Drawing.Point(372, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(306, 25);
             this.label1.TabIndex = 0;
@@ -94,13 +95,13 @@ namespace Digitalizador
             this.tableLayoutPanel2.Controls.Add(this.visorPDF, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.chkMonitorearAuto, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.chkEnviarAuto, 4, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 68);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 39);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1050, 558);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1050, 587);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // gridMonitoreoArchivos
@@ -111,11 +112,11 @@ namespace Digitalizador
             this.gridMonitoreoArchivos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.file});
             this.gridMonitoreoArchivos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridMonitoreoArchivos.Location = new System.Drawing.Point(3, 29);
+            this.gridMonitoreoArchivos.Location = new System.Drawing.Point(3, 31);
             this.gridMonitoreoArchivos.MultiSelect = false;
             this.gridMonitoreoArchivos.Name = "gridMonitoreoArchivos";
             this.gridMonitoreoArchivos.ReadOnly = true;
-            this.gridMonitoreoArchivos.Size = new System.Drawing.Size(288, 505);
+            this.gridMonitoreoArchivos.Size = new System.Drawing.Size(288, 532);
             this.gridMonitoreoArchivos.TabIndex = 0;
             this.gridMonitoreoArchivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMonitoreoArchivos_CellClick);
             // 
@@ -132,7 +133,7 @@ namespace Digitalizador
             this.lblMonitoreados.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMonitoreados.AutoSize = true;
             this.lblMonitoreados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonitoreados.Location = new System.Drawing.Point(94, 4);
+            this.lblMonitoreados.Location = new System.Drawing.Point(94, 5);
             this.lblMonitoreados.Name = "lblMonitoreados";
             this.lblMonitoreados.Size = new System.Drawing.Size(106, 17);
             this.lblMonitoreados.TabIndex = 2;
@@ -143,7 +144,7 @@ namespace Digitalizador
             this.lblVistaPrevia.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblVistaPrevia.AutoSize = true;
             this.lblVistaPrevia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVistaPrevia.Location = new System.Drawing.Point(456, 4);
+            this.lblVistaPrevia.Location = new System.Drawing.Point(456, 5);
             this.lblVistaPrevia.Name = "lblVistaPrevia";
             this.lblVistaPrevia.Size = new System.Drawing.Size(95, 17);
             this.lblVistaPrevia.TabIndex = 4;
@@ -154,7 +155,7 @@ namespace Digitalizador
             this.lblEnviados.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEnviados.AutoSize = true;
             this.lblEnviados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnviados.Location = new System.Drawing.Point(865, 4);
+            this.lblEnviados.Location = new System.Drawing.Point(865, 5);
             this.lblEnviados.Name = "lblEnviados";
             this.lblEnviados.Size = new System.Drawing.Size(74, 17);
             this.lblEnviados.TabIndex = 3;
@@ -162,12 +163,19 @@ namespace Digitalizador
             // 
             // gridEnvioArchivos
             // 
+            this.gridEnvioArchivos.AllowUserToAddRows = false;
+            this.gridEnvioArchivos.AllowUserToDeleteRows = false;
             this.gridEnvioArchivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridEnvioArchivos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
             this.gridEnvioArchivos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridEnvioArchivos.Location = new System.Drawing.Point(758, 29);
+            this.gridEnvioArchivos.Location = new System.Drawing.Point(758, 31);
+            this.gridEnvioArchivos.MultiSelect = false;
             this.gridEnvioArchivos.Name = "gridEnvioArchivos";
-            this.gridEnvioArchivos.Size = new System.Drawing.Size(289, 505);
+            this.gridEnvioArchivos.ReadOnly = true;
+            this.gridEnvioArchivos.Size = new System.Drawing.Size(289, 532);
             this.gridEnvioArchivos.TabIndex = 1;
+            this.gridEnvioArchivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridEnvioArchivos_CellClick);
             // 
             // btnEnviarArchivoManual
             // 
@@ -175,7 +183,7 @@ namespace Digitalizador
             this.btnEnviarArchivoManual.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEnviarArchivoManual.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEnviarArchivoManual.ForeColor = System.Drawing.Color.Blue;
-            this.btnEnviarArchivoManual.Location = new System.Drawing.Point(706, 270);
+            this.btnEnviarArchivoManual.Location = new System.Drawing.Point(706, 285);
             this.btnEnviarArchivoManual.Name = "btnEnviarArchivoManual";
             this.btnEnviarArchivoManual.Size = new System.Drawing.Size(46, 23);
             this.btnEnviarArchivoManual.TabIndex = 5;
@@ -187,10 +195,10 @@ namespace Digitalizador
             // 
             this.visorPDF.Dock = System.Windows.Forms.DockStyle.Fill;
             this.visorPDF.Enabled = true;
-            this.visorPDF.Location = new System.Drawing.Point(307, 29);
+            this.visorPDF.Location = new System.Drawing.Point(307, 31);
             this.visorPDF.Name = "visorPDF";
             this.visorPDF.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("visorPDF.OcxState")));
-            this.visorPDF.Size = new System.Drawing.Size(393, 505);
+            this.visorPDF.Size = new System.Drawing.Size(393, 532);
             this.visorPDF.TabIndex = 6;
             // 
             // chkMonitorearAuto
@@ -198,7 +206,7 @@ namespace Digitalizador
             this.chkMonitorearAuto.AutoSize = true;
             this.chkMonitorearAuto.Checked = true;
             this.chkMonitorearAuto.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMonitorearAuto.Location = new System.Drawing.Point(3, 540);
+            this.chkMonitorearAuto.Location = new System.Drawing.Point(3, 569);
             this.chkMonitorearAuto.Name = "chkMonitorearAuto";
             this.chkMonitorearAuto.Size = new System.Drawing.Size(161, 15);
             this.chkMonitorearAuto.TabIndex = 7;
@@ -210,7 +218,7 @@ namespace Digitalizador
             this.chkEnviarAuto.AutoSize = true;
             this.chkEnviarAuto.Checked = true;
             this.chkEnviarAuto.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEnviarAuto.Location = new System.Drawing.Point(758, 540);
+            this.chkEnviarAuto.Location = new System.Drawing.Point(758, 569);
             this.chkEnviarAuto.Name = "chkEnviarAuto";
             this.chkEnviarAuto.Size = new System.Drawing.Size(141, 15);
             this.chkEnviarAuto.TabIndex = 8;
@@ -232,6 +240,14 @@ namespace Digitalizador
             this.timerChecaTimers.Enabled = true;
             this.timerChecaTimers.Interval = 10000;
             this.timerChecaTimers.Tick += new System.EventHandler(this.timerChecaTimers_Tick);
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "file";
+            this.Column1.HeaderText = "file";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // frmRegistroCandidatos
             // 
@@ -273,5 +289,6 @@ namespace Digitalizador
         private System.Windows.Forms.CheckBox chkMonitorearAuto;
         private System.Windows.Forms.CheckBox chkEnviarAuto;
         private System.Windows.Forms.Timer timerChecaTimers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Digitalizador.exe" size="222688">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Digitalizador.exe" size="224736">
       <assemblyIdentity name="Digitalizador" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cYCictEAdqkd3fasj2PcJzEEQFwelQtEOvxU5xuasFI=</dsig:DigestValue>
+        <dsig:DigestValue>FZTYo1V26SB2iyJjLaFl8X6aQ7GbFWDVG6VckmzLORA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
