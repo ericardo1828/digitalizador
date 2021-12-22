@@ -159,7 +159,6 @@ namespace Digitalizador
             return arrArchivos;
         }
 
-
         public string EnviarArchivosRC(string[] arrArchivos)
         {
             convert conv = new convert();
@@ -255,6 +254,7 @@ namespace Digitalizador
             }
             return bndEnvioCorrecto;
         }
+
         public static string CompressPdf(string inputFilePath,string outputFolder)
         {
             using (var stream = new MemoryStream(File.ReadAllBytes(inputFilePath)) { Position = 0 })
@@ -266,6 +266,7 @@ namespace Digitalizador
                 options.UseFlateDecoderForJpegImages = PdfUseFlateDecoderForJpegImages.Automatic;
                 options.CompressContentStreams = true;
                 options.NoCompression = false;
+                
                 foreach (var page in source.Pages)
                 {
                     document.AddPage(page);
@@ -273,7 +274,6 @@ namespace Digitalizador
 
                 document.Save(outputFolder + @"\" + System.IO.Path.GetFileName(inputFilePath));
             }
-
             return outputFolder + @"\" + System.IO.Path.GetFileName(inputFilePath);
         }
 
@@ -310,8 +310,6 @@ namespace Digitalizador
             }
             return cadenaObtenida;
         }
-
-        
 
         private string[] ReadQRCode(string imgFile)
         {
@@ -373,7 +371,7 @@ namespace Digitalizador
 
         }
 
-        public void LlenarGridEnvioArchivos() //PENDIENTE
+        public void LlenarGridEnvioArchivos()
         {
             odtFilesEnviados.Rows.Clear();
             string currentDirectory = Environment.CurrentDirectory.ToString().Trim();
@@ -434,6 +432,44 @@ namespace Digitalizador
         //visorPDF.src = dirArchivo;
         //}
 
+        //}
+
+        //public void CompressPdf_2(string inputFilePath, string outputFolder)
+        //{
+
+        //    //iTextSharp.text.Document doc = new iTextSharp.text.Document(PageSize.A4, 50, 50, 25, 25);
+        //    //PdfWriter writer = PdfWriter.GetInstance(doc, myStream);
+
+        //    //writer.SetFullCompression();
+
+        //    //doc.Open();
+
+        //    //Image frontCover = iTextSharp.text.Image.GetInstance(@"C:\MyImage.png");
+
+        //    ////Scale down from a 96 dpi image to standard itextsharp 72 dpi
+        //    //frontCover.ScalePercent(75f);
+
+        //    //frontCover.SetAbsolutePosition(0, 0);
+
+        //    //doc.Add(frontCover);
+
+        //    //doc.Close();
+
+        //    /*-------------------------------------------------------------------------*/
+
+        //    //using (var stream = new MemoryStream(File.ReadAllBytes(inputFilePath)) { Position = 0 })
+        //    //using (var document = new iTextSharp.text.pdf.PdfDocument())
+        //    //{
+        //    //    PdfWriter writer = PdfWriter.GetInstance(document, stream);
+        //    //    PdfContentByte contentPlacer;
+        //    //    writer.SetFullCompression(); //
+        //    //    writer.SetPdfVersion(PdfWriter.PDF_VERSION_1_5);
+        //    //    writer.CompressionLevel = PdfStream.BEST_COMPRESSION;
+
+
+        //    //}
+
+        //    /*-------------------------------------------------------------------------*/
         //}
 
 

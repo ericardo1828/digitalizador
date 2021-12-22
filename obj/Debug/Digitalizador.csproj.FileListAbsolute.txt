@@ -195,3 +195,9 @@ C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.c
 C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\dll\sqlite\sqlite.interop.dll
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.frmActas.resources
 C:\Users\programador\Documents\Proyectos\Digitalizador\obj\Debug\Digitalizador.frmRegistroCandidatos.resources
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\PdfSharp.Charting.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\PdfSharp.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\PdfSharp.xml
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\PdfSharp.Charting.xml
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\programador\Documents\Proyectos\Digitalizador\bin\Debug\de\PdfSharp.Charting.resources.dll

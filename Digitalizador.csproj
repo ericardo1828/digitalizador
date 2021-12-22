@@ -384,6 +384,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\mas.PNG" />
+    <Content Include="images\menos.PNG" />
     <None Include="images\refresh_icon.png" />
     <None Include="images\restaurar.png" />
     <None Include="images\maximizar.png" />
