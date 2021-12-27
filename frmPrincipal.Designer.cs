@@ -30,26 +30,26 @@ namespace Digitalizador
         private void InitializeComponent()
         {
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.panelFormularios = new System.Windows.Forms.Panel();
-            this.panelFooter = new System.Windows.Forms.Panel();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.lblEntorno = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnPanelDeControl = new System.Windows.Forms.Button();
             this.btnActas = new System.Windows.Forms.Button();
             this.btnRC = new System.Windows.Forms.Button();
             this.panelTitulo = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.panelFormularios = new System.Windows.Forms.Panel();
+            this.panelFooter = new System.Windows.Forms.Panel();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.lblEntorno = new System.Windows.Forms.Label();
             this.btnRestaurar = new System.Windows.Forms.PictureBox();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.panelContenedor.SuspendLayout();
-            this.panelFormularios.SuspendLayout();
-            this.panelFooter.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelTitulo.SuspendLayout();
+            this.panelFormularios.SuspendLayout();
+            this.panelFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
@@ -69,50 +69,6 @@ namespace Digitalizador
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1200, 750);
             this.panelContenedor.TabIndex = 3;
-            // 
-            // panelFormularios
-            // 
-            this.panelFormularios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelFormularios.BackColor = System.Drawing.Color.White;
-            this.panelFormularios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelFormularios.Controls.Add(this.panelFooter);
-            this.panelFormularios.Location = new System.Drawing.Point(93, 63);
-            this.panelFormularios.Name = "panelFormularios";
-            this.panelFormularios.Size = new System.Drawing.Size(1107, 687);
-            this.panelFormularios.TabIndex = 3;
-            // 
-            // panelFooter
-            // 
-            this.panelFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(49)))), ((int)(((byte)(167)))));
-            this.panelFooter.Controls.Add(this.lblVersion);
-            this.panelFooter.Controls.Add(this.lblEntorno);
-            this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFooter.Location = new System.Drawing.Point(0, 662);
-            this.panelFooter.Name = "panelFooter";
-            this.panelFooter.Size = new System.Drawing.Size(1105, 23);
-            this.panelFooter.TabIndex = 0;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(1105, 0);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(0, 13);
-            this.lblVersion.TabIndex = 1;
-            // 
-            // lblEntorno
-            // 
-            this.lblEntorno.AutoSize = true;
-            this.lblEntorno.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblEntorno.ForeColor = System.Drawing.Color.White;
-            this.lblEntorno.Location = new System.Drawing.Point(0, 0);
-            this.lblEntorno.Name = "lblEntorno";
-            this.lblEntorno.Size = new System.Drawing.Size(0, 13);
-            this.lblEntorno.TabIndex = 1;
             // 
             // panelMenu
             // 
@@ -193,6 +149,66 @@ namespace Digitalizador
             this.panelTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTitulo_MouseMove);
             this.panelTitulo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTitulo_MouseUp);
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Century Gothic", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(518, 9);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(220, 40);
+            this.lblTitulo.TabIndex = 6;
+            this.lblTitulo.Text = "Digitalizador";
+            // 
+            // panelFormularios
+            // 
+            this.panelFormularios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelFormularios.BackColor = System.Drawing.Color.White;
+            this.panelFormularios.BackgroundImage = global::Digitalizador.Properties.Resources.Grafico_Digitalizador;
+            this.panelFormularios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelFormularios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelFormularios.Controls.Add(this.panelFooter);
+            this.panelFormularios.Location = new System.Drawing.Point(93, 63);
+            this.panelFormularios.Name = "panelFormularios";
+            this.panelFormularios.Size = new System.Drawing.Size(1107, 687);
+            this.panelFormularios.TabIndex = 3;
+            // 
+            // panelFooter
+            // 
+            this.panelFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(49)))), ((int)(((byte)(167)))));
+            this.panelFooter.Controls.Add(this.lblVersion);
+            this.panelFooter.Controls.Add(this.lblEntorno);
+            this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelFooter.Location = new System.Drawing.Point(0, 662);
+            this.panelFooter.Name = "panelFooter";
+            this.panelFooter.Size = new System.Drawing.Size(1105, 23);
+            this.panelFooter.TabIndex = 0;
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblVersion.ForeColor = System.Drawing.Color.White;
+            this.lblVersion.Location = new System.Drawing.Point(1105, 0);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(0, 13);
+            this.lblVersion.TabIndex = 1;
+            // 
+            // lblEntorno
+            // 
+            this.lblEntorno.AutoSize = true;
+            this.lblEntorno.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblEntorno.ForeColor = System.Drawing.Color.White;
+            this.lblEntorno.Location = new System.Drawing.Point(0, 0);
+            this.lblEntorno.Name = "lblEntorno";
+            this.lblEntorno.Size = new System.Drawing.Size(0, 13);
+            this.lblEntorno.TabIndex = 1;
+            // 
             // btnRestaurar
             // 
             this.btnRestaurar.Dock = System.Windows.Forms.DockStyle.Right;
@@ -249,20 +265,6 @@ namespace Digitalizador
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // lblTitulo
-            // 
-            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Century Gothic", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(518, 9);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(220, 40);
-            this.lblTitulo.TabIndex = 6;
-            this.lblTitulo.Text = "Digitalizador";
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,12 +279,12 @@ namespace Digitalizador
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.panelContenedor.ResumeLayout(false);
-            this.panelFormularios.ResumeLayout(false);
-            this.panelFooter.ResumeLayout(false);
-            this.panelFooter.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
+            this.panelFormularios.ResumeLayout(false);
+            this.panelFooter.ResumeLayout(false);
+            this.panelFooter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();

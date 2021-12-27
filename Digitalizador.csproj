@@ -384,6 +384,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\Grafico_Digitalizador.jpg" />
     <Content Include="images\mas.PNG" />
     <Content Include="images\menos.PNG" />
     <None Include="images\refresh_icon.png" />

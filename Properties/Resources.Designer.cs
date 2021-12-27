@@ -83,6 +83,16 @@ namespace Digitalizador.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Grafico_Digitalizador {
+            get {
+                object obj = ResourceManager.GetObject("Grafico_Digitalizador", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgIngresar {
             get {
                 object obj = ResourceManager.GetObject("imgIngresar", resourceCulture);

@@ -40,6 +40,7 @@ namespace Digitalizador
             this.lblVistaPrevia = new System.Windows.Forms.Label();
             this.lblEnviados = new System.Windows.Forms.Label();
             this.gridEnvioArchivos = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEnviarArchivoManual = new System.Windows.Forms.Button();
             this.visorPDF = new AxAcroPDFLib.AxAcroPDF();
             this.chkMonitorearAuto = new System.Windows.Forms.CheckBox();
@@ -47,7 +48,6 @@ namespace Digitalizador
             this.timerMonitoreoRC = new System.Windows.Forms.Timer(this.components);
             this.timerEnvioRC = new System.Windows.Forms.Timer(this.components);
             this.timerChecaTimers = new System.Windows.Forms.Timer(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMonitoreoArchivos)).BeginInit();
@@ -72,6 +72,7 @@ namespace Digitalizador
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.Location = new System.Drawing.Point(372, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(306, 25);
@@ -177,6 +178,14 @@ namespace Digitalizador
             this.gridEnvioArchivos.TabIndex = 1;
             this.gridEnvioArchivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridEnvioArchivos_CellClick);
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "file";
+            this.Column1.HeaderText = "file";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // btnEnviarArchivoManual
             // 
             this.btnEnviarArchivoManual.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -240,14 +249,6 @@ namespace Digitalizador
             this.timerChecaTimers.Enabled = true;
             this.timerChecaTimers.Interval = 10000;
             this.timerChecaTimers.Tick += new System.EventHandler(this.timerChecaTimers_Tick);
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "file";
-            this.Column1.HeaderText = "file";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // frmRegistroCandidatos
             // 

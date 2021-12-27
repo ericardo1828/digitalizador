@@ -7,14 +7,14 @@
     <framework targetVersion="4.6" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Digitalizador.exe.manifest" size="46118">
+    <dependentAssembly dependencyType="install" codebase="Digitalizador.exe.manifest" size="46119">
       <assemblyIdentity name="Digitalizador.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NK3mu+/8YllwQ2vLjGfm9ala0qWkD6s0ASiKPYjoO/A=</dsig:DigestValue>
+        <dsig:DigestValue>sENXGAbL7fpSJCDtrRtrU8UhzTlq0fDv1QcIeCNf8tM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

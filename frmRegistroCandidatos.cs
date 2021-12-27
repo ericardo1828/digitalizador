@@ -182,9 +182,9 @@ namespace Digitalizador
                 string pathFolderTemp = currentDirectory.Replace(@"\bin\Debug", @"\temp\");
                 string outputFolderCompressed = currentDirectory.Replace(@"\bin\Debug", @"\compressed\");
 
-                string fileCompressed = CompressPdf(file, outputFolderCompressed);
+                //string fileCompressed = CompressPdf(file, outputFolderCompressed);
 
-                string contenidoQR = ReadPdfFile(fileCompressed, pathFolderTemp); // ULTIMO CAMBIO
+                string contenidoQR = ReadPdfFile(file, pathFolderTemp); // ULTIMO CAMBIO
                 //contenidoQR = contenidoQR.Replace("6\"f", "{\"f");
                 //contenidoQR = contenidoQR.Replace("7\"f", "{\"f");
 
@@ -244,6 +244,102 @@ namespace Digitalizador
                         if (System.IO.File.Exists(pathFolderEnviados + folio + "_" + doc_id + ".pdf"))
                         { 
                             System.IO.File.Delete(pathFolderEnviados + folio + "_" + doc_id + ".pdf"); 
+                        }
+
+                        //mover el archivo de carpeta para que ya no lo envie de nuevo
+                        File.Move(file, pathFolderEnviados + folio + "_" + doc_id + ".pdf");
+                    }
+                    //}
+                }
+            }
+            return bndEnvioCorrecto;
+        }
+
+        public string EnviarArchivosRC_2(string[] arrArchivos)
+        {
+            convert conv = new convert();
+            string bndEnvioCorrecto = "";
+
+            //obtener datos desde SQLite
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+
+            query = "select valor from ConfClaveValor where clave = 'serivicioPruebasRC'";
+            DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
+            string serivicioPruebasRC = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
+
+            string url = serivicioPruebasRC;
+
+            foreach (string file in arrArchivos)
+            {
+                //Leer codigo QR del archivo PDF
+                string currentDirectory = Environment.CurrentDirectory.ToString().Trim();
+
+                string pathFolderTemp = currentDirectory.Replace(@"\bin\Debug", @"\temp\");
+                string outputFolderCompressed = currentDirectory.Replace(@"\bin\Debug", @"\compressed\");
+
+                //string fileCompressed = CompressPdf(file, outputFolderCompressed);
+
+                string contenidoQR = ReadPdfFile(file, pathFolderTemp); // ULTIMO CAMBIO
+                //contenidoQR = contenidoQR.Replace("6\"f", "{\"f");
+                //contenidoQR = contenidoQR.Replace("7\"f", "{\"f");
+
+                validaciones val = new validaciones();
+                if (validaciones.IsValidJson(contenidoQR))
+                {
+                    /////////////////////////////////////////////////
+                    JObject SearchNode = JObject.Parse(contenidoQR);
+
+                    // Obtener la propiedades result en una lista 
+                    IList<JToken> results = SearchNode.Children().ToList();
+
+                    // Serializa resultados JSON a un objeto .NET
+                    IList<cArchivoRC> searchResults = new List<cArchivoRC>();
+
+                    string folio = results[0].First.ToString().Trim();
+                    string candidato = results[1].First.ToString().Trim();
+                    string doc_title = results[2].First.ToString().Trim();
+                    string doc_id = results[3].First.ToString().Trim();
+
+                    //foreach (JToken result in results)
+                    //{
+                    //cArchivoRC searchResult = JsonConvert.DeserializeObject<cArchivoRC>(result.ToString());
+                    //searchResults.Add(searchResult);
+
+
+
+                    //string folio = result.First.ToString();
+
+                    //string candidato = searchResult.candidato.ToString().Trim();
+                    //string doc_title = searchResult.doc_title.ToString().Trim();
+                    //string doc_id = searchResult.doc_id.ToString().Trim();
+
+                    // enviar un archivo en base 64
+                    var file64 = new cfileBase64
+                    {
+                        //filename = "codigoQR4.pdf",
+                        //folder = "urnas",
+                        //file = conv.convertFileToBase64(file)
+
+                        filename = folio + "_" + doc_id + ".pdf",
+                        folder = "urnas",
+                        file = conv.convertFileToBase64(file)
+                    };
+
+                    string jsonFile = JsonConvert.SerializeObject(file64);
+
+                    bndEnvioCorrecto = rest.PostItemFile64(jsonFile, url);
+
+                    //bndEnvioCorrecto = ""; // TEMPORAL PARA EMULAR QUE YA ENVIO ALGO EL SERVICO IMAGENES
+
+                    if (bndEnvioCorrecto != "error")
+                    {
+                        string pathFolderEnviados = currentDirectory.Replace(@"\bin\Debug", @"\enviados\");
+
+                        //eliminar el archivo de enviados si ya existe.
+                        if (System.IO.File.Exists(pathFolderEnviados + folio + "_" + doc_id + ".pdf"))
+                        {
+                            System.IO.File.Delete(pathFolderEnviados + folio + "_" + doc_id + ".pdf");
                         }
 
                         //mover el archivo de carpeta para que ya no lo envie de nuevo

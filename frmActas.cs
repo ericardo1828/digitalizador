@@ -27,6 +27,8 @@ namespace Digitalizador
             InitializeComponent();
         }
 
+
+
         private void frmActas_Load(object sender, EventArgs e)
         {
             odtFilesMonitoreados.Columns.Add("file");
