@@ -202,7 +202,7 @@ namespace Digitalizador
             string json = JsonConvert.SerializeObject(lo);
             string stringToken = rest.PostItem(json);
 
-            bool bndUserPassCorrect = true;
+            bool bndUserPassCorrect = (stringToken == "error" ? false : true);
 
             if(stringToken.Contains("\"response\":false"))
             {

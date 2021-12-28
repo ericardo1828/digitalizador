@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Digitalizador.Persistence;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -72,7 +74,20 @@ namespace Digitalizador
 
         public static string PostItem(string data)
         {
-            var url = $"https://services-dev.iepcjalisco.org.mx:8443/api/v1/login";
+
+            convert conv = new convert();
+            string bndEnvioCorrecto = "";
+
+            //obtener datos desde SQLite
+            DBContext dbsqlite = new DBContext();
+            string query = "";
+
+            query = "select valor from ConfClaveValor where clave = 'servicioPruebasLogin'";
+            DataTable odtConf2 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string serivicioPruebasLogin = odtConf2.Rows.Count > 0 ? odtConf2.Rows[0]["valor"].ToString().Trim() : "";
+
+
+            var url = serivicioPruebasLogin;
             var request = (HttpWebRequest)WebRequest.Create(url);
             //string json = $"{{\"data\":\"{data}\"}}";
             string json = data;

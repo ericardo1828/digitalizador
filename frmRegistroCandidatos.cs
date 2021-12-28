@@ -17,6 +17,8 @@ using Ghostscript.NET;
 using Newtonsoft.Json.Linq;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Pdf;
+using System.Net.Http;
+using System.Net;
 
 namespace Digitalizador
 {
@@ -116,12 +118,19 @@ namespace Digitalizador
                     try
                     {
                         string[] arrArchivos = ObtenerArchivosRCTodos();
-                        EnviarArchivosRC(arrArchivos);
+                        if(arrArchivos.Length > 0) 
+                        {
+                            EnviarArchivosRC_2(arrArchivos);
+                        }
+                        
                     }
                     catch (Exception ex)
                     {
                         string[] arrArchivos = ObtenerArchivosRCTodos();
-                        EnviarArchivosRC(arrArchivos);
+                        if (arrArchivos.Length > 0)
+                        {
+                            EnviarArchivosRC_2(arrArchivos);
+                        }
                     }
                 }
             }
@@ -268,7 +277,24 @@ namespace Digitalizador
             DataTable odtConf = dbsqlite.dbContext_RetSqlDataTable(query);
             string serivicioPruebasRC = odtConf.Rows.Count > 0 ? odtConf.Rows[0]["valor"].ToString().Trim() : "";
 
-            string url = serivicioPruebasRC;
+            query = "select valor from ConfClaveValor where clave = 'servicioPruebasLogin'";
+            DataTable odtConf2 = dbsqlite.dbContext_RetSqlDataTable(query);
+            string serivicioPruebasLogin = odtConf2.Rows.Count > 0 ? odtConf2.Rows[0]["valor"].ToString().Trim() : "";
+
+            //mandar llamar endpoint de login
+            var login = new clogin
+            {
+
+                email = "digitalizador@iepcjalisco.org.mx",
+                password = "123456"
+            };
+
+            string jsonLogin = JsonConvert.SerializeObject(login);
+            string respuesta = rest.PostItem(jsonLogin);
+            
+            dynamic json = JValue.Parse(respuesta);
+            string token = json.token;
+
 
             foreach (string file in arrArchivos)
             {
@@ -301,12 +327,12 @@ namespace Digitalizador
                     string doc_title = results[2].First.ToString().Trim();
                     string doc_id = results[3].First.ToString().Trim();
 
+                    string filename = folio + "_" + doc_id + ".pdf";
+
                     //foreach (JToken result in results)
                     //{
                     //cArchivoRC searchResult = JsonConvert.DeserializeObject<cArchivoRC>(result.ToString());
                     //searchResults.Add(searchResult);
-
-
 
                     //string folio = result.First.ToString();
 
@@ -317,10 +343,6 @@ namespace Digitalizador
                     // enviar un archivo en base 64
                     var file64 = new cfileBase64
                     {
-                        //filename = "codigoQR4.pdf",
-                        //folder = "urnas",
-                        //file = conv.convertFileToBase64(file)
-
                         filename = folio + "_" + doc_id + ".pdf",
                         folder = "urnas",
                         file = conv.convertFileToBase64(file)
@@ -328,9 +350,14 @@ namespace Digitalizador
 
                     string jsonFile = JsonConvert.SerializeObject(file64);
 
-                    bndEnvioCorrecto = rest.PostItemFile64(jsonFile, url);
-
+                    //bndEnvioCorrecto = rest.PostItemFile64(jsonFile, url);
                     //bndEnvioCorrecto = ""; // TEMPORAL PARA EMULAR QUE YA ENVIO ALGO EL SERVICO IMAGENES
+
+
+                    byte[] buffer;
+                    buffer = convertFileToBytes(file);
+                    Task<System.IO.Stream> stream =
+                    Upload(serivicioPruebasRC, folio, doc_title, doc_id, filename, buffer, token);
 
                     if (bndEnvioCorrecto != "error")
                     {
@@ -349,6 +376,74 @@ namespace Digitalizador
                 }
             }
             return bndEnvioCorrecto;
+        }
+
+        public byte[] convertFileToBytes(string filepath)
+        {
+            byte[] buffer;
+            using (Stream stream = new System.IO.FileStream(filepath, FileMode.Open))
+            {
+                buffer = new byte[stream.Length - 1];
+                stream.Read(buffer, 0, buffer.Length);
+            }
+
+            return buffer;
+        }
+
+        private async Task<System.IO.Stream> Upload(string actionUrl, string paramFolio, string paramDocTitle, string paramDocId, string paramFilePath,  byte[] paramFileBytes, string paramToken)
+        {
+            //HttpContent stringContent = new StringContent(paramString);
+            //HttpContent fileStreamContent = new StreamContent(paramFileStream);
+
+            HttpContent stringContentFolio = new StringContent(paramFolio);
+            HttpContent stringContentDocTitle = new StringContent(paramDocTitle);
+            HttpContent stringContentDocId = new StringContent(paramDocId);
+            HttpContent stringContentFilePath = new StringContent(paramFilePath);
+            HttpContent bytesContent = new ByteArrayContent(paramFileBytes);
+            HttpContent stringContentToken = new StringContent("Bearer " + paramToken);
+
+
+            // Create the request and set parameters
+            string boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(actionUrl);
+            request.ContentType = "multipart/form-data; boundary=" + boundary;
+            request.Method = "POST";
+            request.KeepAlive = true;
+            request.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+
+
+            // ------------------------------------------------------------
+            var webClient = new WebClient();
+            string boundary2 = "------------------------" + DateTime.Now.Ticks.ToString("x");
+            webClient.Headers.Add("Content-Type", "multipart/form-data; boundary=" + boundary2);
+            var fileData = webClient.Encoding.GetString(paramFileBytes);
+            var package = string.Format("--{0}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n{3}\r\n--{0}--\r\n", boundary2, paramFilePath, "multipart/form-data", fileData);
+            var nfile = webClient.Encoding.GetBytes(package);
+            byte[] resp = webClient.UploadData(actionUrl, "POST", nfile);
+            // ------------------------------------------------------------
+
+
+
+            using (var client = new HttpClient())
+            using (var formData = new MultipartFormDataContent())
+            {
+                //formData.Add(stringContent, "param1", "param1");
+                //formData.Add(fileStreamContent, "file1", "file1");
+
+                formData.Add(stringContentFolio, "folio", "folio");
+                formData.Add(stringContentDocTitle, "doc_title", "doc_title");
+                formData.Add(stringContentDocId, "doc_id", "doc_id");
+                formData.Add(bytesContent, "file", paramFilePath );
+                formData.Headers.Add( "Authorization", paramToken);
+                
+                var response = await client.PostAsync(actionUrl, formData);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+                return await response.Content.ReadAsStreamAsync();
+            }
         }
 
         public static string CompressPdf(string inputFilePath,string outputFolder)
